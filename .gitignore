@@ -48,3 +48,6 @@ npm-debug.log.*
 *.css.d.ts
 *.sass.d.ts
 *.scss.d.ts
+
+main.prod.js.LICENSE
+main.prod.js.LICENSE.txt
