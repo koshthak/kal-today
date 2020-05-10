@@ -1,4 +1,5 @@
 {
   "HOME": "/",
-  "COUNTER": "/counter"
+  "MONTHLY": "/monthly",
+  "WEEKLY": "/weekly"
 }
