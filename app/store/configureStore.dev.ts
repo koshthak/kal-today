@@ -72,4 +72,4 @@ const configureStore = (initialState?: counterStateType) => {
   return store;
 };
 
-export default { configureStore };
+export default configureStore;

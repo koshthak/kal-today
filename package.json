@@ -47,8 +47,8 @@
     ]
   },
   "build": {
-    "productName": "ElectronReact",
-    "appId": "org.develar.ElectronReact",
+    "productName": "KalToday",
+    "appId": "org.develar.KalToday",
     "files": [
       "dist/",
       "node_modules/",
@@ -91,8 +91,8 @@
     },
     "publish": {
       "provider": "github",
-      "owner": "electron-react-boilerplate",
-      "repo": "electron-react-boilerplate",
+      "owner": "koshtak",
+      "repo": "kal-today",
       "private": false
     }
   },
@@ -124,6 +124,8 @@
   "keywords": [
     "electron",
     "calendar",
+    "kal",
+    "today",
     "react",
     "redux",
     "typescript",
@@ -134,27 +136,6 @@
     "reload"
   ],
   "homepage": "https://github.com/koshthak/kal-today#readme",
-  "jest": {
-    "testURL": "http://localhost/",
-    "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/internals/mocks/fileMock.js",
-      "\\.(css|less|sass|scss)$": "identity-obj-proxy"
-    },
-    "moduleFileExtensions": [
-      "js",
-      "jsx",
-      "ts",
-      "tsx",
-      "json"
-    ],
-    "moduleDirectories": [
-      "node_modules",
-      "app/node_modules"
-    ],
-    "setupFiles": [
-      "./internals/scripts/CheckBuildsExist.js"
-    ]
-  },
   "devDependencies": {
     "@babel/core": "^7.8.6",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
