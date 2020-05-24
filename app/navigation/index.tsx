@@ -6,7 +6,7 @@ import routes from '../constants/routes.json';
 
 import MonthlyView from '../screens/monthly';
 import WeeklyView from '../screens/weekly';
-import Sidebar from '../components/sidebar';
+import Sidebar from '../components/Sidebar';
 
 const Navigation = () => (
   <HashRouter>

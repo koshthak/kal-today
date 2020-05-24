@@ -208,9 +208,9 @@ export default merge.smart(baseConfig, {
       multiStep: true
     }),
 
-    new TypedCssModulesPlugin({
-      globPattern: 'app/**/*.{css,scss,sass}'
-    }),
+    // new TypedCssModulesPlugin({
+    //   globPattern: 'app/**/*.{css,scss,sass}'
+    // }),
 
     new webpack.NoEmitOnErrorsPlugin(),
 
