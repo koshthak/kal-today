@@ -1,14 +1,26 @@
 {
-  "name": "electron-react-boilerplate",
-  "productName": "electron-react-boilerplate",
-  "version": "1.1.0",
-  "description": "Electron application boilerplate based on React, React Router, Webpack, React Hot Loader for rapid application development",
+  "name": "kal-today",
+  "productName": "Kal Today",
+  "version": "0.1.0",
+  "description": "Modern Calendar Applicationt",
   "main": "./main.prod.js",
   "author": {
-    "name": "Electron React Boilerplate Maintainers",
-    "email": "electronreactboilerplate@gmail.com",
-    "url": "https://github.com/electron-react-boilerplate"
+    "name": "Kal Today Maintainers",
+    "email": "info@kal.today",
+    "url": "https://github.com/koshthak/kal-today"
   },
+  "contributors": [
+    {
+      "name": "Saurabh Yadav",
+      "email": "yadav-saurabh@outlook.com",
+      "url": "https://github.com/yadav-saurabh"
+    },
+    {
+      "name": "Memon Shoyeb",
+      "email": "memonshoyeb26@gmail.com",
+      "url": "https://github.com/memon07"
+    }
+  ],
   "scripts": {
     "electron-rebuild": "node -r ../internals/scripts/BabelRegister.js ../internals/scripts/ElectronRebuild.js",
     "postinstall": "yarn electron-rebuild"
