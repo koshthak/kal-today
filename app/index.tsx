@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import configureStore from './store/configureStore';
 import Navigation from './navigation';
 
-import './styles/index.scss';
+import './styles/index.global.scss';
 
 const AppContainer = process.env.PLAIN_HMR ? Fragment : ReactHotAppContainer;
 
