@@ -1,11 +1,39 @@
-@import './../../styles/variables';
+@import './../../styles/configuration';
 
 .sidebar {
   background-color: $sidebar-bg-color;
   width: $sidebar-width;
-  position: relative;
-  margin: 0;
-  left: 0;
-  height: 100vh;
-  color: $white;
+  color: $sidebar-color;
+}
+
+.header {
+  height: $header-height;
+  display: flex;
+
+  &-description {
+    flex: 1;
+    text-align: center;
+    align-self: center;
+  }
+}
+
+.logo {
+  width: $logo-height;
+  height: $logo-height;
+  background: $logo-bg;
+
+  // temp styling logo will be an image
+  span {
+    position: absolute;
+    width: 56px;
+    height: 56px;
+    left: 25px;
+    top: 18px;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 55px;
+    line-height: 67px;
+    letter-spacing: 0.01em;
+    color: #fff;
+  }
 }

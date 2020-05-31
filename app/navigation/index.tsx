@@ -7,6 +7,7 @@ import routes from '../constants/routes.json';
 import MonthlyView from '../screens/monthly';
 import WeeklyView from '../screens/weekly';
 import Sidebar from '../components/sidebar/sidebar.component';
+import Header from '../components/header';
 
 import styles from './navigation.scss';
 
@@ -14,6 +15,7 @@ const Navigation = () => (
   <HashRouter>
     <Sidebar />
     <div className={styles.views}>
+      <Header />
       <Switch>
         <Route path={routes.HOME} exact component={MonthlyView} />
         <Route path={routes.MONTHLY} component={MonthlyView} />
