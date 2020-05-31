@@ -27,7 +27,10 @@
   },
   "license": "MIT",
   "dependencies": {
+    "i18next": "^19.4.5",
+    "i18next-browser-languagedetector": "^4.2.0",
+    "i18next-xhr-backend": "^3.2.2",
     "moment": "^2.25.3",
-    "react-intl": "^4.5.3"
+    "react-i18next": "^11.5.0"
   }
 }
