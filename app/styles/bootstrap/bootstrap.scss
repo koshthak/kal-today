@@ -1,10 +1,5 @@
-// override bootstrap variables
-@import '../variables';
-
 // Configuration
-@import 'functions';
-@import 'variables';
-@import 'mixins';
+@import '../configuration';
 @import 'utilities';
 
 // Layout & components
@@ -18,4 +13,3 @@
 
 // Utilities
 @import 'utilities/api';
-// scss-docs-end import-stack

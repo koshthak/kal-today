@@ -13,7 +13,7 @@ const AppContainer = process.env.PLAIN_HMR ? Fragment : ReactHotAppContainer;
 
 document.addEventListener('DOMContentLoaded', () =>
   render(
-    <Suspense fallback={(<div>Loading</div>)}>
+    <Suspense fallback={<div>Loading</div>}>
       <AppContainer>
         <Provider store={configureStore()}>
           <Navigation />

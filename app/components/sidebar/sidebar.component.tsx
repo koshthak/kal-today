@@ -1,9 +1,16 @@
 import React from 'react';
 
-import style from './sidebar.scss';
+import SidebarHeader from './header.sidebar';
+import SidebarDates from './dates.sidebar';
+import styles from './sidebar.scss';
 
-const Sidebar = () => {
-  return <div className={style.sidebar}>sidebar</div>;
+const Sidebar: React.FC = () => {
+  return (
+    <div className={styles.sidebar}>
+      <SidebarHeader />
+      <SidebarDates />
+    </div>
+  );
 };
 
 export default Sidebar;

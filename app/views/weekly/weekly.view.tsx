@@ -3,7 +3,7 @@ import { RouteComponentProps } from 'react-router-dom';
 
 type Props = RouteComponentProps;
 
-const WeeklyView = ({ history }: Props) => {
+const WeeklyView: React.FC<Props> = ({ history }: Props) => {
   return (
     <div>
       <h3>Weekly View</h3>
