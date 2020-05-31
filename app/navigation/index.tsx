@@ -2,24 +2,25 @@ import React from 'react';
 import { hot } from 'react-hot-loader/root';
 import { HashRouter, Switch, Route } from 'react-router-dom';
 
-import routes from '../constants/routes.json';
+import ROUTES from '../constants/routes.json';
 
-import MonthlyView from '../screens/monthly';
-import WeeklyView from '../screens/weekly';
 import Sidebar from '../components/sidebar/sidebar.component';
-import Header from '../components/header';
+import Header from '../components/header/header.component';
+
+import MonthlyView from '../views/monthly/monthly.view';
+import WeeklyView from '../views/weekly/weekly.view';
 
 import styles from './navigation.scss';
 
-const Navigation = () => (
+const Navigation: React.FC = () => (
   <HashRouter>
     <Sidebar />
     <div className={styles.views}>
       <Header />
       <Switch>
-        <Route path={routes.HOME} exact component={MonthlyView} />
-        <Route path={routes.MONTHLY} component={MonthlyView} />
-        <Route path={routes.WEEKLY} component={WeeklyView} />
+        <Route path={ROUTES.HOME} exact component={MonthlyView} />
+        <Route path={ROUTES.MONTHLY} component={MonthlyView} />
+        <Route path={ROUTES.WEEKLY} component={WeeklyView} />
       </Switch>
     </div>
   </HashRouter>

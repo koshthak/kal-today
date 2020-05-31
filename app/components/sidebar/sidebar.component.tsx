@@ -1,16 +1,14 @@
 import React from 'react';
 
+import SidebarHeader from './header.sidebar';
+import SidebarDates from './dates.sidebar';
 import styles from './sidebar.scss';
 
-const Sidebar = () => {
+const Sidebar: React.FC = () => {
   return (
     <div className={styles.sidebar}>
-      <div className={styles.header}>
-        <div className={styles.logo}>
-          <span>K.</span>
-        </div>
-        <div className={styles['header-description']}>Kal- daily</div>
-      </div>
+      <SidebarHeader />
+      <SidebarDates />
     </div>
   );
 };
