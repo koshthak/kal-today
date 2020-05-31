@@ -37,3 +37,20 @@
     color: #fff;
   }
 }
+
+.curr-month {
+  color: $white;
+}
+
+.today {
+  color: $black;
+  background-color: $white;
+}
+
+.prev-month {
+  color: $gray-600;
+}
+
+.next-month {
+  color: $gray-600;
+}

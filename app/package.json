@@ -27,7 +27,6 @@
   },
   "license": "MIT",
   "dependencies": {
-    "moment": "^2.25.3",
-    "react-intl": "^4.5.3"
+    "moment": "^2.25.3"
   }
 }
