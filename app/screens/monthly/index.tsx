@@ -17,15 +17,15 @@ function MonthlyView({ history }: Props) {
   return (
     <div>
       <h2>Monthly View</h2>
-      <button onClick={()=>handleClick('US')} >
+      <button onClick={()=>handleClick('en')} >
             English
       </button>
-      <button onClick={()=>handleClick('SA')} >
-            Korean
+      <button onClick={()=>handleClick('sa')} >
+            Arabic
       </button>
       <button type="button" onClick={() => history.push(routes.WEEKLY)}>
         go to weekly 
-        <h3>{t('Close.1')}</h3>
+        <h3>{t('close')}</h3>
       </button>
     </div>
   );
