@@ -49,12 +49,16 @@ const SidebarDates: React.FC = () => {
   );
 
   return (
-    <div className="container">
-      <h2 className="text-center">{CURR.format('MMMM')}</h2>
-      <h4 className="text-center">{CURR.format('YYYY')}</h4>
+    <div className={`${'container' + ' '}${styles['date-container']}`}>
+      <h2 className={`${'text-center' + ' '}${styles['month-display']}`}>
+        {CURR.format('MMMM')}
+      </h2>
+      <h4 className={`${'text-center' + ' '}${styles['year-display']}`}>
+        {CURR.format('YYYY')}
+      </h4>
       <div className="row">
         {weekdayshortname.map(d => (
-          <div key={d} className="col">
+          <div key={d} className={`${'col' + ' '}${styles['weekday-display']}`}>
             {d}
           </div>
         ))}

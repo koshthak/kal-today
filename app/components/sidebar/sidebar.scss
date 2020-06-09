@@ -14,6 +14,8 @@
     flex: 1;
     text-align: center;
     align-self: center;
+    font-size: 22px;
+    font-family: 'Gilroy_b';
   }
 }
 
@@ -29,28 +31,53 @@
     height: 56px;
     left: 25px;
     top: 18px;
-    font-style: normal;
-    font-weight: 800;
     font-size: 55px;
     line-height: 67px;
     letter-spacing: 0.01em;
-    color: #fff;
   }
 }
 
 .curr-month {
   color: $white;
+  text-align: center;
+  margin: 10px 0px;
 }
 
 .today {
-  color: $black;
+  color: $logo-bg;
   background-color: $white;
+  text-align: center;
+  margin: 10px 0px;
 }
 
 .prev-month {
   color: $gray-600;
+  text-align: center;
+  margin: 10px 0px;
 }
 
 .next-month {
   color: $gray-600;
+  text-align: center;
+  margin: 10px 0px;
+}
+
+.date-container {
+  margin-top: 25px;
+}
+
+.month-display {
+  font-family: 'Gilroy_b';
+}
+
+.year-display {
+  font-family: 'Gilroy_l';
+  font-size: 20px;
+  padding-bottom: 15px;
+}
+
+.weekday-display {
+  font-family: 'Gilroy_b';
+  padding-bottom: 10px;
+  text-align: center;
 }
