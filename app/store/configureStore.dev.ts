@@ -2,8 +2,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import createRootReducer from '../reducers';
-import * as counterActions from '../actions/counter';
-import { counterStateType } from '../reducers/types';
+import * as sidebarActions from '../actions/sidebar.action';
 
 declare global {
   interface Window {
@@ -21,7 +20,7 @@ declare global {
 
 const rootReducer = createRootReducer();
 
-const configureStore = (initialState?: counterStateType) => {
+const configureStore = () => {
   // Redux Configuration
   const middleware = [];
   const enhancers = [];
@@ -42,7 +41,7 @@ const configureStore = (initialState?: counterStateType) => {
 
   // Redux DevTools Configuration
   const actionCreators = {
-    ...counterActions
+    ...sidebarActions
   };
   // If Redux DevTools Extension is installed use it, otherwise use Redux compose
   /* eslint-disable no-underscore-dangle */
@@ -59,7 +58,7 @@ const configureStore = (initialState?: counterStateType) => {
   const enhancer = composeEnhancers(...enhancers);
 
   // Create Store
-  const store = createStore(rootReducer, initialState, enhancer);
+  const store = createStore(rootReducer, {}, enhancer);
 
   if (module.hot) {
     module.hot.accept(

@@ -43,20 +43,8 @@ i18n
     lng: 'en',
     fallbackLng, // if user computer language is not on the list of available languages, than we will be using the fallback language specified earlier
     debug: true,
-    // backend: {
-    //     loadPath: '/locales/{{lng}}/{{ns}}.json',
-    // },
-    resources: {
-      en: {
-        translation: {
-          close: 'close'
-        }
-      },
-      sa: {
-        translation: {
-          close: 'إغلاق'
-        }
-      }
+    backend: {
+      loadPath: `./locales/{{lng}}/{{ns}}.json`
     },
     whitelist: availableLanguages,
     detection: options,
