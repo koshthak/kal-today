@@ -43,7 +43,6 @@ dll
 main.js
 main.js.map
 app.icns
-internals/fonts
 
 .idea
 npm-debug.log.*
