@@ -2,8 +2,12 @@ import React, { Fragment } from 'react';
 import moment, { Moment } from 'moment';
 import styles from './sidebar.scss';
 
-const SidebarDates: React.FC = () => {
-  const CURR: Moment = moment();
+type Props = {
+  activeDate: Moment;
+};
+
+const SidebarDates: React.FC<Props> = ({ activeDate }: Props) => {
+  const CURR: Moment = activeDate;
 
   const totalDays = [];
 
@@ -43,22 +47,22 @@ const SidebarDates: React.FC = () => {
       key: `next-date-${d}`,
       dateObj: moment(CURR)
         .add(1, 'M')
-        .date(d),
+        .date(d + 1),
       class: 'next-month'
     })
   );
 
   return (
-    <div className={`${'container' + ' '}${styles['date-container']}`}>
-      <h2 className={`${'text-center' + ' '}${styles['month-display']}`}>
+    <div className={`${'container'} ${styles['date-container']}`}>
+      <h2 className={`${'text-center'} ${styles['month-display']}`}>
         {CURR.format('MMMM')}
       </h2>
-      <h4 className={`${'text-center' + ' '}${styles['year-display']}`}>
+      <h4 className={`${'text-center'} ${styles['year-display']}`}>
         {CURR.format('YYYY')}
       </h4>
       <div className="row">
         {weekdayshortname.map(d => (
-          <div key={d} className={`${'col' + ' '}${styles['weekday-display']}`}>
+          <div key={d} className={`${'col'} ${styles['weekday-display']}`}>
             {d}
           </div>
         ))}
@@ -66,11 +70,9 @@ const SidebarDates: React.FC = () => {
           <Fragment key={e.key}>
             {i % 7 === 0 && <div className="w-100" />}
             <div
-              className={[
-                'col',
-                e.dateObj.isSame(CURR) ? styles.today : '',
+              className={`col ${e.dateObj.isSame(CURR) ? styles.today : ''} ${
                 styles[e.class]
-              ].join(' ')}
+              }`}
             >
               {e.dateObj.format('D')}
             </div>
