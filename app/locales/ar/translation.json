@@ -1,8 +1,8 @@
 {
-  "close": "Close",
+  "close": "إغلاق",
   "date": "{{date, D}}",
   "month": "{{date, MMMM}}",
   "weather": {
-    "date": "date: {{date, currentDate}}"
+    "date": "إغلاق: {{date, currentDate}}"
   }
 }

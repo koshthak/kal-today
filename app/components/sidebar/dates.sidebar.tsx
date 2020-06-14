@@ -1,12 +1,14 @@
 import React, { Fragment } from 'react';
 import moment, { Moment } from 'moment';
 import styles from './sidebar.scss';
+import { useTranslation } from 'react-i18next';
 
 type Props = {
   activeDate: Moment;
 };
 
 const SidebarDates: React.FC<Props> = ({ activeDate }: Props) => {
+  const { t } = useTranslation();
   const CURR: Moment = activeDate;
 
   const totalDays = [];
@@ -56,9 +58,11 @@ const SidebarDates: React.FC<Props> = ({ activeDate }: Props) => {
     <div className={`${'container'} ${styles['date-container']}`}>
       <h2 className={`${'text-center'} ${styles['month-display']}`}>
         {CURR.format('MMMM')}
+        {t('month', {date: moment(CURR).format('MMMM')})}
       </h2>
       <h4 className={`${'text-center'} ${styles['year-display']}`}>
         {CURR.format('YYYY')}
+        {t('date', {date: moment().format('YYYY')})}
       </h4>
       <div className="row">
         {weekdayshortname.map(d => (
@@ -74,7 +78,8 @@ const SidebarDates: React.FC<Props> = ({ activeDate }: Props) => {
                 styles[e.class]
               }`}
             >
-              {e.dateObj.format('D')}
+              {e.dateObj.format('D')} 
+              {/* {t('date', {date: e.dateObj.format('D')})} */}
             </div>
           </Fragment>
         ))}

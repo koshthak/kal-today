@@ -2,6 +2,7 @@ import React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
+import moment from 'moment';
 
 import ROUTES from '../../constants/routes.json';
 
@@ -20,9 +21,11 @@ const MonthlyView: React.FC<Props> = ({ history }: Props) => {
       <button type="button" onClick={() => handleClick('en')}>
         English
       </button>
-      <button type="button" onClick={() => handleClick('sa')}>
+      <button type="button" onClick={() => handleClick('ar')}>
         Arabic
       </button>
+      <p>{t('weather.date', {date: moment().format("dddd, MMMM Do YYYY, h:mm:ss a")})}</p>
+      <p>xxxxxx{t('date', {date: moment().format('D')})}</p>
       <button type="button" onClick={() => history.push(ROUTES.WEEKLY)}>
         go to weekly
         <h3>{t('close')}</h3>
