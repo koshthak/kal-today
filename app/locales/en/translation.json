@@ -1,8 +1,4 @@
 {
   "close": "Close",
-  "date": "{{date, D}}",
-  "month": "{{date, MMMM}}",
-  "weather": {
-    "date": "date: {{date, currentDate}}"
-  }
+  "moment": "{{value, moment}}"
 }

@@ -7,12 +7,6 @@ import moment from 'moment';
 const fallbackLng = ['en'];
 const availableLanguages = ['en', 'ar'];
 
-// availableLanguages.forEach((element) => {
-//   if (element !== 'en') {
-//       import(`moment/locale/${element}`);
-//     }
-// });
-
 const options = {
   // order and from where user language should be detected
   order: ['navigator', 'htmlTag', 'path', 'subdomain'],
@@ -46,7 +40,7 @@ i18n
 
   .use(initReactI18next) // pass the i18n instance to react-i18next.
 
-  .on('languageChanged', function(lng) {
+  .on('languageChanged', lng => {
     moment.locale(lng);
   })
 
@@ -61,16 +55,14 @@ i18n
     detection: options,
     interpolation: {
       escapeValue: false,
-      // format: (value, format, lng) => {
-      //   moment().locale(lng)
-      //   if(value instanceof Date) return moment(value).format(format);
-      //   return value;
-      // },
-      format: function(value, format, lng) {
-        if(value instanceof Date) return moment(value).format(format);
+      format: (value, format, lng) => {
+        if (format === 'moment')
+          return moment(value.moment)
+            .locale(lng)
+            .format(value.format);
         return value;
       }
-    },
+    }
   });
 
 export default i18n;
