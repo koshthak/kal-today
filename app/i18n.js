@@ -57,7 +57,7 @@ i18n
       escapeValue: false,
       format: (value, format, lng) => {
         if (format === 'moment')
-          return moment(value.moment)
+          return moment(value.date)
             .locale(lng)
             .format(value.format);
         return value;

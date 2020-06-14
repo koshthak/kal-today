@@ -57,10 +57,10 @@ const SidebarDates: React.FC<Props> = ({ activeDate }: Props) => {
   return (
     <div className={`${'container'} ${styles['date-container']}`}>
       <h2 className={`${'text-center'} ${styles['month-display']}`}>
-        {t('moment', { value: { moment: CURR, format: 'MMMM' } })}
+        {t('moment', { value: { date: CURR, format: 'MMMM' } })}
       </h2>
       <h4 className={`${'text-center'} ${styles['year-display']}`}>
-        {t('moment', { value: { moment: CURR, format: 'YYYY' } })}
+        {t('moment', { value: { date: CURR, format: 'YYYY' } })}
       </h4>
       <div className="row">
         {weekdayshortname.map(d => (
@@ -76,7 +76,7 @@ const SidebarDates: React.FC<Props> = ({ activeDate }: Props) => {
                 styles[e.class]
               }`}
             >
-              {t('moment', { value: { moment: e.dateObj, format: 'D' } })}
+              {t('moment', { value: { date: e.dateObj, format: 'D' } })}
             </div>
           </Fragment>
         ))}
