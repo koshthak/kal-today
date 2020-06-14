@@ -37,6 +37,22 @@
   }
 }
 
+.month {
+  font-family: 'Gilroy_b';
+}
+
+.year {
+  font-family: 'Gilroy_l';
+  font-size: 20px;
+  padding-bottom: 15px;
+}
+
+.weekday {
+  font-family: 'Gilroy_b';
+  padding-bottom: 10px;
+  text-align: center;
+}
+
 .curr-month {
   color: $white;
   text-align: center;
@@ -64,20 +80,4 @@
 
 .date-container {
   margin-top: 25px;
-}
-
-.month-display {
-  font-family: 'Gilroy_b';
-}
-
-.year-display {
-  font-family: 'Gilroy_l';
-  font-size: 20px;
-  padding-bottom: 15px;
-}
-
-.weekday-display {
-  font-family: 'Gilroy_b';
-  padding-bottom: 10px;
-  text-align: center;
 }

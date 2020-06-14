@@ -1,82 +1,50 @@
 import React, { Fragment } from 'react';
-import moment, { Moment } from 'moment';
+import moment from 'moment';
 import { useTranslation } from 'react-i18next';
+
+import {
+  dateArrayType,
+  getMonthDates,
+  getWeekShortName,
+  getMonthName
+} from '../../utils/dates.utiles';
 import styles from './sidebar.scss';
 
 type Props = {
-  activeDate: Moment;
+  year: number;
+  month: number;
 };
 
-const SidebarDates: React.FC<Props> = ({ activeDate }: Props) => {
+const SidebarDates: React.FC<Props> = ({ year, month }: Props) => {
   const { t } = useTranslation();
-  const CURR: Moment = activeDate;
 
-  const totalDays = [];
-
-  const weekdayshortname = moment.weekdaysShort();
-
-  const firstDayOfMonth = moment(CURR)
-    .startOf('month')
-    .format('d');
-
-  const lastDayOfMonth = moment(CURR)
-    .endOf('month')
-    .format('d');
-
-  const previousMonthDates = [...Array(parseInt(firstDayOfMonth, 10)).keys()];
-  previousMonthDates.map(d =>
-    totalDays.push({
-      key: `prev-date-${d}`,
-      dateObj: moment(CURR).date(-d),
-      class: 'prev-month'
-    })
-  );
-
-  for (let d = 1; d <= moment(CURR).daysInMonth(); d += 1) {
-    totalDays.push({
-      key: `date-${d}`,
-      dateObj: moment(CURR).date(d),
-      class: 'curr-month'
-    });
-  }
-
-  const nextMonthDates = [
-    ...Array(7 - parseInt(lastDayOfMonth, 10) - 1).keys()
-  ];
-
-  nextMonthDates.map(d =>
-    totalDays.push({
-      key: `next-date-${d}`,
-      dateObj: moment(CURR)
-        .add(1, 'M')
-        .date(d + 1),
-      class: 'next-month'
-    })
-  );
+  const days: dateArrayType = getMonthDates(year, month);
+  const weekNames: Array<string> = getWeekShortName();
+  const monthName: string = getMonthName(year);
 
   return (
     <div className={`${'container'} ${styles['date-container']}`}>
-      <h2 className={`${'text-center'} ${styles['month-display']}`}>
-        {t('moment', { value: { date: CURR, format: 'MMMM' } })}
-      </h2>
-      <h4 className={`${'text-center'} ${styles['year-display']}`}>
-        {t('moment', { value: { date: CURR, format: 'YYYY' } })}
+      <h2 className={`${'text-center'} ${styles.month}`}>{monthName}</h2>
+      <h4 className={`${'text-center'} ${styles.year}`}>
+        {t('moment', {
+          value: { date: moment().year(year), format: 'YYYY' }
+        })}
       </h4>
       <div className="row">
-        {weekdayshortname.map(d => (
-          <div key={d} className={`${'col'} ${styles['weekday-display']}`}>
+        {weekNames.map(d => (
+          <div key={d} className={`${'col'} ${styles.weekday}`}>
             {d}
           </div>
         ))}
-        {totalDays.map((e, i) => (
+        {days.map((e, i) => (
           <Fragment key={e.key}>
             {i % 7 === 0 && <div className="w-100" />}
             <div
-              className={`col ${e.dateObj.isSame(CURR) ? styles.today : ''} ${
-                styles[e.class]
-              }`}
+              className={`col ${
+                e.dateObj.isSame(moment(), 'day') ? styles.today : ''
+              } ${styles[e.class]}`}
             >
-              {t('moment', { value: { date: e.dateObj, format: 'D' } })}
+              {e.dateObj.format('D')}
             </div>
           </Fragment>
         ))}
