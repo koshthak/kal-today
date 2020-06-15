@@ -1,5 +1,8 @@
 /* variables */
 $body-bg: #e5e5e5;
+$font-family-base: 'Gilroy_r';
+
+$primary: #6f52ed;
 
 /* Including bootstrap Configuration to override and acess them anywhere with just the import of this file
 * Note:- to override bootstrap variables include them above the import
@@ -19,6 +22,11 @@ $sidebar-width: 380px;
 $sidebar-color: $white;
 
 // logo
-$logo-bg: #6f52ed;
+$logo-bg: $primary;
 $logo-height: $header-height;
 $logo-width: $header-height;
+
+// fonts
+$font-family-bold: 'Gilroy_b';
+$font-family-regular: $font-family-base;
+$font-family-light: 'Gilroy_l';

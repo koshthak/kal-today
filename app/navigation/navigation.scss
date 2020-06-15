@@ -1,5 +1,9 @@
 @import './../styles/configuration';
 
-.views {
+.wrapper {
   width: calc(100% - #{$sidebar-width});
+}
+
+.views {
+  height: calc(100% - #{$header-height});
 }

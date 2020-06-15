@@ -1,11 +1,7 @@
-@import './bootstrap/bootstrap';
 @import './font.scss';
+@import './bootstrap/bootstrap';
 
 #root {
   display: flex;
   height: 100vh;
-}
-
-body {
-  font-family: 'Gilroy_r';
 }

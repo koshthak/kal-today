@@ -9,6 +9,8 @@ export type dateArrayType = Array<{
 
 export const getWeekShortName = (): Array<string> => moment.weekdaysShort(true);
 
+export const getWeekName = (): Array<string> => moment.weekdays(true);
+
 export const getMonthName = (year: number): string =>
   moment()
     .year(year)
@@ -22,7 +24,7 @@ export const getYear = (year: number): string =>
 export const getMonthDates = (year: number, month: number): dateArrayType => {
   const totalDays: dateArrayType = [];
 
-  const currentMonth = moment()
+  const currentMonth: Moment = moment()
     .year(year)
     .month(month);
 

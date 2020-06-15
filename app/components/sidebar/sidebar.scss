@@ -1,5 +1,9 @@
 @import './../../styles/configuration';
 
+.wrapper {
+  margin-top: 25px;
+}
+
 .sidebar {
   background-color: $sidebar-bg-color;
   width: $sidebar-width;
@@ -15,7 +19,7 @@
     text-align: center;
     align-self: center;
     font-size: 22px;
-    font-family: 'Gilroy_b';
+    font-family: $font-family-bold;
   }
 }
 
@@ -38,46 +42,33 @@
 }
 
 .month {
-  font-family: 'Gilroy_b';
+  font-family: $font-family-bold;
 }
 
 .year {
-  font-family: 'Gilroy_l';
-  font-size: 20px;
+  font-family: $font-family-light;
+  font-size: 20;
   padding-bottom: 15px;
 }
 
 .weekday {
-  font-family: 'Gilroy_b';
-  padding-bottom: 10px;
-  text-align: center;
+  font-family: $font-family-bold;
+  padding-bottom: 10;
 }
 
 .curr-month {
   color: $white;
-  text-align: center;
-  margin: 10px 0px;
+  margin: 10px 0;
 }
 
 .today {
-  color: $logo-bg;
+  color: $primary;
   background-color: $white;
-  text-align: center;
-  margin: 10px 0px;
+  margin: 10px 0;
 }
 
-.prev-month {
-  color: $gray-600;
-  text-align: center;
-  margin: 10px 0px;
-}
-
+.prev-month,
 .next-month {
   color: $gray-600;
-  text-align: center;
-  margin: 10px 0px;
-}
-
-.date-container {
-  margin-top: 25px;
+  margin: 10px 0;
 }

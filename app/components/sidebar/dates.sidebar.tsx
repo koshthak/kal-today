@@ -7,7 +7,7 @@ import {
   getMonthDates,
   getWeekShortName,
   getMonthName
-} from '../../utils/dates.utiles';
+} from '../../utils/dates.utils';
 import styles from './sidebar.scss';
 
 type Props = {
@@ -23,16 +23,16 @@ const SidebarDates: React.FC<Props> = ({ year, month }: Props) => {
   const monthName: string = getMonthName(year);
 
   return (
-    <div className={`${'container'} ${styles['date-container']}`}>
-      <h2 className={`${'text-center'} ${styles.month}`}>{monthName}</h2>
-      <h4 className={`${'text-center'} ${styles.year}`}>
+    <div className={`container ${styles.wrapper}`}>
+      <h2 className={`text-center ${styles.month}`}>{monthName}</h2>
+      <h4 className={`text-center ${styles.year}`}>
         {t('moment', {
           value: { date: moment().year(year), format: 'YYYY' }
         })}
       </h4>
       <div className="row">
         {weekNames.map(d => (
-          <div key={d} className={`${'col'} ${styles.weekday}`}>
+          <div key={d} className={`col ${styles.weekday}`}>
             {d}
           </div>
         ))}
@@ -40,7 +40,7 @@ const SidebarDates: React.FC<Props> = ({ year, month }: Props) => {
           <Fragment key={e.key}>
             {i % 7 === 0 && <div className="w-100" />}
             <div
-              className={`col ${
+              className={`col text-center ${
                 e.dateObj.isSame(moment(), 'day') ? styles.today : ''
               } ${styles[e.class]}`}
             >

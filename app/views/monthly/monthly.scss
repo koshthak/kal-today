@@ -1,0 +1,36 @@
+@import './../../styles/configuration';
+
+.wrapper {
+  display: flex;
+  height: 100%;
+}
+
+.date-container {
+  padding: 4rem 0;
+}
+
+.month {
+  font-family: $font-family-light;
+  color: $primary;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  margin-top: 9rem;
+}
+
+.curr-month,
+.next-month,
+.prev-month {
+  background-color: $white;
+  min-height: 8rem;
+  min-width: 8rem;
+  margin: 0.5rem 0.5rem 0 0;
+}
+.prev-month,
+.next-month {
+  color: $gray-600;
+}
+
+.today {
+  color: $white;
+  background-color: $primary;
+}

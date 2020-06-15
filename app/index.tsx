@@ -4,10 +4,11 @@ import { AppContainer as ReactHotAppContainer } from 'react-hot-loader';
 import { Provider } from 'react-redux';
 
 import configureStore from './store/configureStore';
-import Navigation from './navigation';
 import './i18n';
-
 import './styles/index.global.scss';
+
+// navigation after global scss import so that gloabl scss dosen't override local scss
+import Navigation from './navigation';
 
 const AppContainer = process.env.PLAIN_HMR ? Fragment : ReactHotAppContainer;
 
