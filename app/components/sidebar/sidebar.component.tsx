@@ -24,7 +24,12 @@ const Sidebar: React.FC = () => {
   return (
     <div className={styles.sidebar}>
       <SidebarHeader />
-      {activeDate && <SidebarDates activeDate={activeDate} />}
+      {activeDate && (
+        <SidebarDates
+          year={moment(activeDate).year()}
+          month={moment(activeDate).month()}
+        />
+      )}
     </div>
   );
 };

@@ -20,7 +20,7 @@ const MonthlyView: React.FC<Props> = ({ history }: Props) => {
       <button type="button" onClick={() => handleClick('en')}>
         English
       </button>
-      <button type="button" onClick={() => handleClick('sa')}>
+      <button type="button" onClick={() => handleClick('ar')}>
         Arabic
       </button>
       <button type="button" onClick={() => history.push(ROUTES.WEEKLY)}>

@@ -2,9 +2,10 @@ import i18n from 'i18next';
 import Backend from 'i18next-xhr-backend';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import { initReactI18next } from 'react-i18next';
+import moment from 'moment';
 
 const fallbackLng = ['en'];
-const availableLanguages = ['en', 'sa'];
+const availableLanguages = ['en', 'ar'];
 
 const options = {
   // order and from where user language should be detected
@@ -39,6 +40,10 @@ i18n
 
   .use(initReactI18next) // pass the i18n instance to react-i18next.
 
+  .on('languageChanged', lng => {
+    moment.locale(lng);
+  })
+
   .init({
     lng: 'en',
     fallbackLng, // if user computer language is not on the list of available languages, than we will be using the fallback language specified earlier
@@ -49,7 +54,14 @@ i18n
     whitelist: availableLanguages,
     detection: options,
     interpolation: {
-      escapeValue: false
+      escapeValue: false,
+      format: (value, format, lng) => {
+        if (format === 'moment')
+          return moment(value.date)
+            .locale(lng)
+            .format(value.format);
+        return value;
+      }
     }
   });
 
