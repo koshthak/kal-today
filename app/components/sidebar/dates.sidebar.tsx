@@ -20,7 +20,7 @@ const SidebarDates: React.FC<Props> = ({ year, month }: Props) => {
 
   const days: dateArrayType = getMonthDates(year, month);
   const weekNames: Array<string> = getWeekShortName();
-  const monthName: string = getMonthName(year);
+  const monthName: string = getMonthName(year, month);
 
   return (
     <div className={`container ${styles.wrapper}`}>

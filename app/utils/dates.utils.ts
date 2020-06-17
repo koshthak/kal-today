@@ -11,9 +11,10 @@ export const getWeekShortName = (): Array<string> => moment.weekdaysShort(true);
 
 export const getWeekName = (): Array<string> => moment.weekdays(true);
 
-export const getMonthName = (year: number): string =>
+export const getMonthName = (year: number, month: number): string =>
   moment()
     .year(year)
+    .month(month)
     .format('MMMM');
 
 export const getYear = (year: number): string =>

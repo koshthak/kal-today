@@ -20,7 +20,7 @@ const MonthlyView: React.FC = () => {
 
   const days: dateArrayType = getMonthDates(year, month);
   const weekNames: Array<string> = getWeekName();
-  const monthName: string = getMonthName(year);
+  const monthName: string = getMonthName(year, month);
 
   return (
     <div className={styles.wrapper}>
