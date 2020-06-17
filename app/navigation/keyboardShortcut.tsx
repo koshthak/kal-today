@@ -1,31 +1,32 @@
 import React, { useEffect } from 'react';
+import electronLocalshortcut from 'electron-localshortcut';
+import { BrowserWindow, remote } from 'electron';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
+
 import ROUTES from '../constants/routes';
 
 type Props = RouteComponentProps;
+const windowRef: BrowserWindow = remote.getCurrentWindow();
 
 const KeyboardShortcut: React.FC<Props> = ({ history }: Props) => {
-  const handleKeyPress = (event: KeyboardEvent) => {
-    if (event.key === 'D' || event.key === 'd') {
+  const regeisterShortcuts = () => {
+    electronLocalshortcut.register(windowRef, 'D', () => {
       history.push(ROUTES.DAILY);
-      return;
-    }
-    if (event.key === 'W' || event.key === 'w') {
+    });
+    electronLocalshortcut.register(windowRef, 'W', () => {
       history.push(ROUTES.WEEKLY);
-      return;
-    }
-    if (event.key === 'M' || event.key === 'm') {
+    });
+    electronLocalshortcut.register(windowRef, 'M', () => {
       history.push(ROUTES.MONTHLY);
-    }
+    });
   };
 
   useEffect(() => {
-    window.addEventListener('keyup', handleKeyPress, true);
+    regeisterShortcuts();
     return () => {
-      window.removeEventListener('keyup', handleKeyPress, true);
+      electronLocalshortcut.unregisterAll(windowRef);
     };
   }, []);
-
   return <></>;
 };
 
