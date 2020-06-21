@@ -1,28 +1,9 @@
 @import './../../styles/configuration';
 
 /** header styles  **/
-.month {
-  text-align: center;
-  padding-top: 1.5rem;
-  padding-bottom: 1rem;
-  display: flex;
-
-  &-name {
-    font-family: $font-family-light;
+.header {
+  :global(.view-header-name) {
     color: $primary;
-    margin-bottom: 0;
-  }
-
-  &-btn {
-    margin: 0 1rem;
-
-    img {
-      width: 30px;
-
-      &.prev-img {
-        transform: rotate(180deg);
-      }
-    }
   }
 }
 
@@ -44,7 +25,6 @@
   color: $view-black-200;
   font-size: 1.2rem;
   padding-top: 0.6rem;
-  font-family: $font-family-regular;
 
   @include media-breakpoint-up(lg) {
     min-height: 11vh;

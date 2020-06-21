@@ -9,12 +9,10 @@ import { setStatusCurrtDate } from '../../actions/status.action';
 import { rootStateType } from '../../reducers';
 import rightArrow from '../../../internals/img/right_arrow.svg';
 
-import styles from './monthly.scss';
-
-const MonthlyHeader: React.FC = () => {
+const DailyHeader: React.FC = () => {
   const { t } = useTranslation();
 
-  const { currentDate }: statusStateType = useSelector(
+  const { today, currentDate }: statusStateType = useSelector(
     (state: rootStateType) => state.status
   );
   const dispatch = useDispatch();
@@ -24,15 +22,15 @@ const MonthlyHeader: React.FC = () => {
   const monthName: string = getMonthName(currentDate.month());
 
   const onPrevClick = () => {
-    dispatch(setStatusCurrtDate(moment(currentDate).subtract(1, 'M')));
+    dispatch(setStatusCurrtDate(moment(currentDate).subtract(1, 'd')));
   };
 
   const onNextClick = () => {
-    dispatch(setStatusCurrtDate(moment(currentDate).add(1, 'M')));
+    dispatch(setStatusCurrtDate(moment(currentDate).add(1, 'd')));
   };
 
   return (
-    <div className={`view-header ${styles.header}`}>
+    <div className="view-header">
       <button
         type="button"
         className="transparent-btn view-header-btn"
@@ -40,10 +38,17 @@ const MonthlyHeader: React.FC = () => {
       >
         <img src={rightArrow} className="prev-img" alt="prev-btn" />
       </button>
-      <h3 className="view-header-name">
+      <h4 className="view-header-name">
+        <span
+          className={`view-header-date ${
+            currentDate.isSame(today, 'day') ? 'today' : ''
+          }`}
+        >
+          {currentDate.date()}
+        </span>
         <span className="view-header-month">{monthName}</span>
         <span className="view-header-year">{currentDate.year()}</span>
-      </h3>
+      </h4>
       <button
         type="button"
         className="transparent-btn view-header-btn"
@@ -55,4 +60,4 @@ const MonthlyHeader: React.FC = () => {
   );
 };
 
-export default MonthlyHeader;
+export default DailyHeader;

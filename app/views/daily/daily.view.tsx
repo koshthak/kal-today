@@ -1,15 +1,11 @@
 import React from 'react';
-import { RouteComponentProps } from 'react-router-dom';
 
-type Props = RouteComponentProps;
+import DailyHeader from './header.daily';
 
-const DailyView: React.FC<Props> = ({ history }: Props) => {
+const DailyView: React.FC = () => {
   return (
     <div>
-      <h3>Daily View</h3>
-      <button type="button" onClick={() => history.goBack()}>
-        go back
-      </button>
+      <DailyHeader />
     </div>
   );
 };
