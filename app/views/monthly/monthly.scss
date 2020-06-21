@@ -17,6 +17,7 @@
   align-items: flex-end;
   display: flex;
   color: $view-black-100;
+  padding-bottom: 10px
 }
 
 .month {
@@ -37,8 +38,8 @@
     cursor: pointer;
   }
 
-  &-month-reverse-btn {
-    transform: rotate(270deg);
+  &-reverse-btn {
+    transform: rotate(180deg);
   }
 }
 
