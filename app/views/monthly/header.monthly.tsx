@@ -7,6 +7,8 @@ import { statusStateType } from '../../reducers/status.reducer';
 import { setStatusMonth } from '../../actions/status.action';
 import { rootStateType } from '../../reducers';
 
+import rightArrow from '../../../internals/img/right_arrow.svg';
+
 import styles from './monthly.scss';
 
 const MonthlyHeader: React.FC = () => {
@@ -31,21 +33,15 @@ const MonthlyHeader: React.FC = () => {
 
   return (
     <div className={styles.month}>
-      <button
-        className={styles['month-btn']}
-        type="button"
+      <img src={rightArrow} 
+        className={`${styles['month-btn']} ${styles['month-reverse-btn']} `}
         onClick={onPrevClick}
-      >
-        p
-      </button>
+      alt=""/>
       <h2 className={styles['month-name']}>{monthName}</h2>
-      <button
+      <img src={rightArrow} 
         className={styles['month-btn']}
-        type="button"
         onClick={onNextClick}
-      >
-        n
-      </button>
+      alt=""/>
     </div>
   );
 };
