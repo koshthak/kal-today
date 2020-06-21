@@ -38,7 +38,11 @@ const MonthlyDates: React.FC = () => {
             <div
               className={`col ${
                 e.dateObj.isSame(today, 'day') ? styles.today : ''
-              } ${styles[e.class]}`}
+              } 
+              ${
+                e.dateObj.isBefore(today, 'day') ? styles.prevdays : ''
+              }
+              ${styles[e.class]}`}
             >
               {e.dateObj.format('D')}
             </div>

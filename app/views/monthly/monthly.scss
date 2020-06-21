@@ -50,18 +50,21 @@
   min-height: 6rem;
   margin: 0 10px 10px 0;
   border-radius: 10px;
-  color: $view-grey-200;
+  color: $view-black-200;
   font-size: 20px;
   padding-top: 10px;
   font-family: $font-family-bold;
 }
 .prev-month,
 .next-month {
-  color: $view-grey-200;
-  background-color: $view-grey-100;
+  background-color: $view-grey-100 !important;
 }
 
 .today {
   color: $white;
   background-color: $primary;
+}
+
+.prevdays {
+  background-color: $view-skyblue-100 ;
 }
