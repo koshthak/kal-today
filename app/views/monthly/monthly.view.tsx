@@ -3,11 +3,9 @@ import React from 'react';
 import MonthlyDates from './dates.monthly';
 import MonthlyHeader from './header.monthly';
 
-import styles from './monthly.scss';
-
 const MonthlyView: React.FC = () => {
   return (
-    <div className={styles.wrapper}>
+    <div className="container h-100">
       <MonthlyHeader />
       <MonthlyDates />
     </div>

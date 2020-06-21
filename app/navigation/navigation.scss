@@ -6,4 +6,5 @@
 
 .views {
   height: calc(100% - #{$header-height});
+  background-color: $view-grey-100;
 }

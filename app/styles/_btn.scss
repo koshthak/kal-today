@@ -1,0 +1,9 @@
+.transparent-btn {
+  background: transparent;
+  &,
+  &:focus,
+  &:active {
+    border: none;
+    outline: none;
+  }
+}
