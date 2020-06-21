@@ -1,0 +1,42 @@
+@import './../../styles/configuration';
+
+/** header styles  **/
+.header {
+  text-align: center;
+  padding-top: 1.5rem;
+  padding-bottom: 1rem;
+  display: flex;
+  align-items: center;
+
+  .month-name {
+    font-family: $font-family-light;
+    min-width: 16rem;
+    margin: 0;
+  }
+
+  &-date {
+    font-family: $font-family-bold;
+    margin-right: 1rem;
+  }
+  &-date,
+  &-month,
+  &-year {
+    margin-right: 1rem;
+  }
+
+  .month-btn {
+    margin: 0 1rem;
+
+    img {
+      width: 30px;
+
+      &.prev-img {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  .today {
+    color: $primary;
+  }
+}

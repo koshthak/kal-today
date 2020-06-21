@@ -10,12 +10,12 @@ import { rootStateType } from '../../reducers';
 
 import rightArrow from '../../../internals/img/right_arrow.svg';
 
-import styles from './monthly.scss';
+import styles from './daily.scss';
 
-const MonthlyHeader: React.FC = () => {
+const DailyHeader: React.FC = () => {
   const { t } = useTranslation();
 
-  const { currentDate }: statusStateType = useSelector(
+  const { today, currentDate }: statusStateType = useSelector(
     (state: rootStateType) => state.status
   );
   const dispatch = useDispatch();
@@ -25,15 +25,15 @@ const MonthlyHeader: React.FC = () => {
   const monthName: string = getMonthName(currentDate.month());
 
   const onPrevClick = () => {
-    dispatch(setStatusCurrtDate(moment(currentDate).subtract(1, 'M')));
+    dispatch(setStatusCurrtDate(moment(currentDate).subtract(1, 'd')));
   };
 
   const onNextClick = () => {
-    dispatch(setStatusCurrtDate(moment(currentDate).add(1, 'M')));
+    dispatch(setStatusCurrtDate(moment(currentDate).add(1, 'd')));
   };
 
   return (
-    <div className={styles.month}>
+    <div className={styles.header}>
       <button
         type="button"
         className={`transparent-btn ${styles['month-btn']}`}
@@ -41,7 +41,17 @@ const MonthlyHeader: React.FC = () => {
       >
         <img src={rightArrow} className={styles['prev-img']} alt="prev-btn" />
       </button>
-      <h2 className={styles['month-name']}>{monthName}</h2>
+      <h4 className={styles['month-name']}>
+        <span
+          className={`${styles['header-date']} ${
+            currentDate.isSame(today, 'day') ? styles.today : ''
+          }`}
+        >
+          {currentDate.date()}
+        </span>
+        <span className={styles['header-month']}>{monthName}</span>
+        <span className={styles['header-year']}>{currentDate.year()}</span>
+      </h4>
       <button
         type="button"
         className={`transparent-btn ${styles['month-btn']}`}
@@ -53,4 +63,4 @@ const MonthlyHeader: React.FC = () => {
   );
 };
 
-export default MonthlyHeader;
+export default DailyHeader;

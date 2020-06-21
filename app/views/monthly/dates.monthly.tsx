@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useRef } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
@@ -16,15 +16,19 @@ import styles from './monthly.scss';
 const MonthlyDates: React.FC = () => {
   const { t } = useTranslation();
 
-  const { today, year, month }: statusStateType = useSelector(
+  const { today, currentDate }: statusStateType = useSelector(
     (state: rootStateType) => state.status
   );
 
   useEffect(() => {}, [t]);
 
-  const days: dateArrayType = getMonthDates(year, month);
+  const days: dateArrayType = getMonthDates(
+    currentDate.year(),
+    currentDate.month()
+  );
   const weekNames: Array<string> = getWeekName();
-  const totalRows = days.length / DATES_CONST.DAYS_IN_WEEK;
+  const isMaxRowsView =
+    days.length / DATES_CONST.DAYS_IN_WEEK === DATES_CONST.MAX_ROW_IN_MONTH;
 
   return (
     <div className="row">
@@ -41,9 +45,7 @@ const MonthlyDates: React.FC = () => {
           <div
             className={[
               'col',
-              totalRows === DATES_CONST.MAX_ROW_IN_MONTH
-                ? styles['max-rows-view']
-                : '',
+              isMaxRowsView ? styles['max-rows-view'] : '',
               e.dateObj.isSame(today, 'day') ? styles.today : '',
               e.dateObj.isBefore(today, 'day') ? styles.prevdays : '',
               styles[e.class]
