@@ -3,7 +3,7 @@ import { hot } from 'react-hot-loader/root';
 import { HashRouter, Switch, Route } from 'react-router-dom';
 
 import ROUTES from '../constants/routes';
-import KeyboardShortcut from './keyboardShortcut';
+import KeyboardShortcut from '../keyboardShortcut';
 
 import Sidebar from '../components/sidebar/sidebar.component';
 import Header from '../components/header/header.component';

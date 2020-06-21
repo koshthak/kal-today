@@ -3,7 +3,8 @@ import { Moment } from 'moment';
 import {
   SET_STATUS_TODAY_DATE,
   SET_STATUS_MONTH,
-  SET_STATUS_YEAR
+  SET_STATUS_YEAR,
+  RESET_STATUS_DATES
 } from '../constants/actionType';
 import { statusDispatchType } from '../reducers/status.reducer';
 
@@ -31,5 +32,11 @@ export const setStatusYear = (year: number) => (
   dispatch({
     type: SET_STATUS_YEAR,
     payload: year
+  });
+};
+
+export const resetStatus = () => (dispatch: statusDispatchType) => {
+  dispatch({
+    type: RESET_STATUS_DATES
   });
 };
