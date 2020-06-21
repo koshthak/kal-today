@@ -1,3 +1,8 @@
 /**  sidebar */
 export const SET_SIDEBAR_CURRENT_DATE = 'SET_SIDEBAR_CURRENT_DATE';
 export const SET_SIDEBAR_ACTIVE_DATE = 'SET_SIDEBAR_ACTIVE_DATE';
+
+/* status */
+export const SET_STATUS_TODAY_DATE = 'SET_STATUS_TODAY_DATE';
+export const SET_STATUS_MONTH = 'SET_STATUS_MONTH';
+export const SET_STATUS_YEAR = 'SET_STATUS_YEAR';

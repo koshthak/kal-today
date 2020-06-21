@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import moment from 'moment';
 import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
 
 import {
   dateArrayType,
@@ -9,14 +10,18 @@ import {
   getMonthName
 } from '../../utils/dates.utils';
 import styles from './sidebar.scss';
+import { sidebarStateType } from '../../reducers/sidebar.reducer';
+import { rootStateType } from '../../reducers';
 
-type Props = {
-  year: number;
-  month: number;
-};
-
-const SidebarDates: React.FC<Props> = ({ year, month }: Props) => {
+const SidebarDates: React.FC = () => {
   const { t } = useTranslation();
+
+  const { activeDate }: sidebarStateType = useSelector(
+    (state: rootStateType) => state.sidebar
+  );
+
+  const year = activeDate.year();
+  const month = activeDate.month();
 
   const days: dateArrayType = getMonthDates(year, month);
   const weekNames: Array<string> = getWeekShortName();

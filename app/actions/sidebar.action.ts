@@ -6,7 +6,7 @@ import {
 } from '../constants/actionType';
 import { sidebarDispatchType } from '../reducers/sidebar.reducer';
 
-export const setSidebaeCurrentDate = (date: Moment) => (
+export const setSidebarCurrentDate = (date: Moment) => (
   dispatch: sidebarDispatchType
 ) => {
   dispatch({

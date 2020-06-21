@@ -10,11 +10,20 @@
 }
 
 .month {
-  font-family: $font-family-light;
-  color: $primary;
-  writing-mode: vertical-rl;
-  text-orientation: upright;
-  margin-top: 9rem;
+  text-align: center;
+  margin-top: 7rem;
+
+  &-name {
+    font-family: $font-family-light;
+    color: $primary;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    margin-bottom: 0;
+  }
+
+  &-btn {
+    margin: 1rem;
+  }
 }
 
 .curr-month,

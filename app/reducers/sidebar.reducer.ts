@@ -1,4 +1,4 @@
-import { Moment } from 'moment';
+import moment, { Moment } from 'moment';
 import { Dispatch as ReduxDispatch } from 'redux';
 
 import {
@@ -7,8 +7,8 @@ import {
 } from '../constants/actionType';
 
 export type sidebarStateType = Readonly<{
-  activeDate: Moment | undefined;
-  currentDate: Moment | undefined;
+  activeDate: Moment;
+  currentDate: Moment;
 }>;
 
 export type actionType =
@@ -18,8 +18,8 @@ export type actionType =
 export type sidebarDispatchType = ReduxDispatch<actionType>;
 
 const initialState: sidebarStateType = {
-  activeDate: undefined,
-  currentDate: undefined
+  activeDate: moment(),
+  currentDate: moment()
 };
 
 const sidebar = (state = initialState, action: actionType) => {
