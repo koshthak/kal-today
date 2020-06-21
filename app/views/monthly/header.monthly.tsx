@@ -14,14 +14,14 @@ import styles from './monthly.scss';
 const MonthlyHeader: React.FC = () => {
   const { t } = useTranslation();
 
-  const { month, year }: statusStateType = useSelector(
+  const { month }: statusStateType = useSelector(
     (state: rootStateType) => state.status
   );
   const dispatch = useDispatch();
 
   useEffect(() => {}, [t]);
 
-  const monthName: string = getMonthName(year, month);
+  const monthName: string = getMonthName(month);
 
   const onPrevClick = () => {
     dispatch(setStatusMonth(month - 1));
@@ -33,15 +33,21 @@ const MonthlyHeader: React.FC = () => {
 
   return (
     <div className={styles.month}>
-      <img src={rightArrow} 
-        className={`${styles['month-btn']} ${styles['month-reverse-btn']} `}
+      <button
+        type="button"
+        className={`transparent-btn ${styles['month-btn']}`}
         onClick={onPrevClick}
-      alt=""/>
+      >
+        <img src={rightArrow} className={styles['prev-img']} alt="prev-btn" />
+      </button>
       <h2 className={styles['month-name']}>{monthName}</h2>
-      <img src={rightArrow} 
-        className={styles['month-btn']}
+      <button
+        type="button"
+        className={`transparent-btn ${styles['month-btn']}`}
         onClick={onNextClick}
-      alt=""/>
+      >
+        <img src={rightArrow} alt="next-btn" />
+      </button>
     </div>
   );
 };

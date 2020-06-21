@@ -1,29 +1,10 @@
 @import './../../styles/configuration';
 
-.wrapper {
-  display: flex;
-  height: 100%;
-  background-color: $view-grey-100;
-  flex-direction: column;
-}
-
-.date-container {
-  padding: 1rem 0 4rem 0;
-  margin: 0 5px 0 0; 
-}
-
-.weekday {
-  font-family: $font-family-light;
-  align-items: flex-end;
-  display: flex;
-  color: $view-black-100;
-  padding-bottom: 10px
-}
-
+/** header styles  **/
 .month {
   text-align: center;
-  margin-top: 1.5rem;
-  margin-bottom: 1rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1rem;
   display: flex;
 
   &-name {
@@ -34,27 +15,59 @@
 
   &-btn {
     margin: 0 1rem;
-    width: 30px;
-    cursor: pointer;
-  }
 
-  &-reverse-btn {
-    transform: rotate(180deg);
+    img {
+      width: 30px;
+
+      &.prev-img {
+        transform: rotate(180deg);
+      }
+    }
   }
+}
+
+/** dates styles  **/
+.weekday {
+  font-family: $font-family-light;
+  color: $view-black-100;
+  padding: 1rem;
+  padding-bottom: 1.5rem;
+  font-size: 1.4rem;
 }
 
 .curr-month,
 .next-month,
 .prev-month {
   background-color: $white;
-  min-height: 6rem;
-  margin: 0 10px 10px 0;
-  border-radius: 10px;
+  margin: 0.3rem;
+  border-radius: 0.6rem;
   color: $view-black-200;
-  font-size: 20px;
-  padding-top: 10px;
-  font-family: $font-family-bold;
+  font-size: 1.2rem;
+  padding-top: 0.6rem;
+  font-family: $font-family-regular;
+
+  @include media-breakpoint-up(lg) {
+    min-height: 11vh;
+    &.max-rows-view {
+      min-height: 9vh;
+    }
+  }
+
+  @include media-breakpoint-up(xl) {
+    min-height: 11.5vh;
+    &.max-rows-view {
+      min-height: 9.5vh;
+    }
+  }
+
+  @include media-breakpoint-up(xxl) {
+    min-height: 13.5vh;
+    &.max-rows-view {
+      min-height: 11vh;
+    }
+  }
 }
+
 .prev-month,
 .next-month {
   background-color: $view-grey-100 !important;
@@ -66,5 +79,5 @@
 }
 
 .prevdays {
-  background-color: $view-skyblue-100 ;
+  background-color: $view-skyblue-100;
 }
