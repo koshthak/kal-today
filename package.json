@@ -280,7 +280,15 @@
     ],
     "rules": {
       "at-rule-no-unknown": null,
-      "no-descending-specificity": null
+      "no-descending-specificity": null,
+      "selector-pseudo-class-no-unknown": [
+        true,
+        {
+          "ignorePseudoClasses": [
+            "global"
+          ]
+        }
+      ]
     }
   },
   "renovate": {

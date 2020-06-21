@@ -7,7 +7,6 @@ import { getMonthName } from '../../utils/dates.utils';
 import { statusStateType } from '../../reducers/status.reducer';
 import { setStatusCurrtDate } from '../../actions/status.action';
 import { rootStateType } from '../../reducers';
-
 import rightArrow from '../../../internals/img/right_arrow.svg';
 
 import styles from './monthly.scss';
@@ -33,18 +32,21 @@ const MonthlyHeader: React.FC = () => {
   };
 
   return (
-    <div className={styles.month}>
+    <div className={`view-header ${styles.header}`}>
       <button
         type="button"
-        className={`transparent-btn ${styles['month-btn']}`}
+        className="transparent-btn view-header-btn"
         onClick={onPrevClick}
       >
-        <img src={rightArrow} className={styles['prev-img']} alt="prev-btn" />
+        <img src={rightArrow} className="prev-img" alt="prev-btn" />
       </button>
-      <h2 className={styles['month-name']}>{monthName}</h2>
+      <h3 className="view-header-name">
+        <span className="view-header-month">{monthName}</span>
+        <span className="view-header-year">{currentDate.year()}</span>
+      </h3>
       <button
         type="button"
-        className={`transparent-btn ${styles['month-btn']}`}
+        className="transparent-btn view-header-btn"
         onClick={onNextClick}
       >
         <img src={rightArrow} alt="next-btn" />

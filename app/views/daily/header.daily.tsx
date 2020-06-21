@@ -7,10 +7,7 @@ import { getMonthName } from '../../utils/dates.utils';
 import { statusStateType } from '../../reducers/status.reducer';
 import { setStatusCurrtDate } from '../../actions/status.action';
 import { rootStateType } from '../../reducers';
-
 import rightArrow from '../../../internals/img/right_arrow.svg';
-
-import styles from './daily.scss';
 
 const DailyHeader: React.FC = () => {
   const { t } = useTranslation();
@@ -33,28 +30,28 @@ const DailyHeader: React.FC = () => {
   };
 
   return (
-    <div className={styles.header}>
+    <div className="view-header">
       <button
         type="button"
-        className={`transparent-btn ${styles['month-btn']}`}
+        className="transparent-btn view-header-btn"
         onClick={onPrevClick}
       >
-        <img src={rightArrow} className={styles['prev-img']} alt="prev-btn" />
+        <img src={rightArrow} className="prev-img" alt="prev-btn" />
       </button>
-      <h4 className={styles['month-name']}>
+      <h4 className="view-header-name">
         <span
-          className={`${styles['header-date']} ${
-            currentDate.isSame(today, 'day') ? styles.today : ''
+          className={`view-header-date ${
+            currentDate.isSame(today, 'day') ? 'today' : ''
           }`}
         >
           {currentDate.date()}
         </span>
-        <span className={styles['header-month']}>{monthName}</span>
-        <span className={styles['header-year']}>{currentDate.year()}</span>
+        <span className="view-header-month">{monthName}</span>
+        <span className="view-header-year">{currentDate.year()}</span>
       </h4>
       <button
         type="button"
-        className={`transparent-btn ${styles['month-btn']}`}
+        className="transparent-btn view-header-btn"
         onClick={onNextClick}
       >
         <img src={rightArrow} alt="next-btn" />
