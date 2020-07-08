@@ -7,6 +7,17 @@ export type dateArrayType = Array<{
   class: string;
 }>;
 
+export type timeArrayType = Array<{
+  key: string;
+  timeObj: Moment;
+  class: string;
+  intervals: Array<{
+    key: string;
+    timeObj: Moment;
+    class: string;
+  }>;
+}>;
+
 export const getWeekShortName = (): Array<string> => moment.weekdaysShort(true);
 
 export const getWeekName = (): Array<string> => moment.weekdays(true);
@@ -60,4 +71,30 @@ export const getMonthDates = (year: number, month: number): dateArrayType => {
   }
 
   return totalDays;
+};
+
+export const getTimeLine = (interval = 15): timeArrayType => {
+  const timeLine: timeArrayType = [];
+  const start: Moment = moment().startOf('day');
+
+  for (let i = 0; i < 24; i += 1) {
+    const intervals = [...Array(60 / interval).keys()].map(value => {
+      return {
+        key: `interval-${value}`,
+        class: 'interval',
+        timeObj: moment(start)
+          .add(i, 'h')
+          .add(interval * value, 'm')
+      };
+    });
+
+    timeLine[i] = {
+      key: `time-${i}`,
+      class: 'time',
+      timeObj: moment(start).add(i, 'h'),
+      intervals: [...intervals]
+    };
+  }
+
+  return timeLine;
 };
