@@ -44,6 +44,7 @@ const MonthlyHeader: React.FC = () => {
       <h3 className="view-header-name">
         <span className="view-header-month">{monthName}</span>
         <span className="view-header-year">{year}</span>
+
       </h3>
       <button
         type="button"
