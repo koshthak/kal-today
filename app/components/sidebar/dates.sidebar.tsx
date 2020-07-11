@@ -8,7 +8,7 @@ import {
   getMonthDates,
   getWeekShortName,
   getMonthName
-} from '../../utils/dates.utils';
+} from '../../utils/calendar.utils';
 import styles from './sidebar.scss';
 import { sidebarStateType } from '../../reducers/sidebar.reducer';
 import { rootStateType } from '../../reducers';

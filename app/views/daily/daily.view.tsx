@@ -1,13 +1,13 @@
 import React from 'react';
 
 import DailyHeader from './header.daily';
-import DailyTime from './time.daily';
+import DailyTimeline from './timeline.daily';
 
 const DailyView: React.FC = () => {
   return (
-    <div>
+    <div className="container h-100">
       <DailyHeader />
-      <DailyTime />
+      <DailyTimeline />
     </div>
   );
 };

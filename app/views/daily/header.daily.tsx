@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import moment from 'moment';
 
-import { getMonthName } from '../../utils/dates.utils';
+import { getMonthName } from '../../utils/calendar.utils';
 import { statusStateType } from '../../reducers/status.reducer';
 import { setStatusCurrtDate } from '../../actions/status.action';
 import { rootStateType } from '../../reducers';

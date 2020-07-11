@@ -6,7 +6,7 @@ import {
   dateArrayType,
   getMonthDates,
   getWeekName
-} from '../../utils/dates.utils';
+} from '../../utils/calendar.utils';
 import { rootStateType } from '../../reducers';
 import { statusStateType } from '../../reducers/status.reducer';
 import DATES_CONST from '../../constants/dates';
