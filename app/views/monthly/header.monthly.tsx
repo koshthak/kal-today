@@ -14,22 +14,22 @@ import styles from './monthly.scss';
 const MonthlyHeader: React.FC = () => {
   const { t } = useTranslation();
 
-  const { currentDate }: statusStateType = useSelector(
+  const { activeDate }: statusStateType = useSelector(
     (state: rootStateType) => state.status
   );
   const dispatch = useDispatch();
 
   useEffect(() => {}, [t]);
 
-  const monthName: string = getMonthName(currentDate.month());
-  const year: string = getYear(currentDate.year());
+  const monthName: string = getMonthName(activeDate.month());
+  const year: string = getYear(activeDate.year());
 
   const onPrevClick = () => {
-    dispatch(setStatusCurrtDate(moment(currentDate).subtract(1, 'M')));
+    dispatch(setStatusCurrtDate(moment(activeDate).subtract(1, 'M')));
   };
 
   const onNextClick = () => {
-    dispatch(setStatusCurrtDate(moment(currentDate).add(1, 'M')));
+    dispatch(setStatusCurrtDate(moment(activeDate).add(1, 'M')));
   };
 
   return (

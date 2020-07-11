@@ -16,15 +16,15 @@ import styles from './monthly.scss';
 const MonthlyDates: React.FC = () => {
   const { t } = useTranslation();
 
-  const { today, currentDate }: statusStateType = useSelector(
+  const { today, activeDate }: statusStateType = useSelector(
     (state: rootStateType) => state.status
   );
 
   useEffect(() => {}, [t]);
 
   const days: dateArrayType = getMonthDates(
-    currentDate.year(),
-    currentDate.month()
+    activeDate.year(),
+    activeDate.month()
   );
   const weekNames: Array<string> = getWeekName();
   const isMaxRowsView =
