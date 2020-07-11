@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import moment from 'moment';
 
-import { getMonthName } from '../../utils/dates.utils';
+import { getMonthName, getYear } from '../../utils/calendar.utils';
 import { statusStateType } from '../../reducers/status.reducer';
 import { setStatusCurrtDate } from '../../actions/status.action';
 import { rootStateType } from '../../reducers';
@@ -14,21 +14,22 @@ import styles from './monthly.scss';
 const MonthlyHeader: React.FC = () => {
   const { t } = useTranslation();
 
-  const { currentDate }: statusStateType = useSelector(
+  const { activeDate }: statusStateType = useSelector(
     (state: rootStateType) => state.status
   );
   const dispatch = useDispatch();
 
   useEffect(() => {}, [t]);
 
-  const monthName: string = getMonthName(currentDate.month());
+  const monthName: string = getMonthName(activeDate.month());
+  const year: string = getYear(activeDate.year());
 
   const onPrevClick = () => {
-    dispatch(setStatusCurrtDate(moment(currentDate).subtract(1, 'M')));
+    dispatch(setStatusCurrtDate(moment(activeDate).subtract(1, 'M')));
   };
 
   const onNextClick = () => {
-    dispatch(setStatusCurrtDate(moment(currentDate).add(1, 'M')));
+    dispatch(setStatusCurrtDate(moment(activeDate).add(1, 'M')));
   };
 
   return (
@@ -42,7 +43,8 @@ const MonthlyHeader: React.FC = () => {
       </button>
       <h3 className="view-header-name">
         <span className="view-header-month">{monthName}</span>
-        <span className="view-header-year">{currentDate.year()}</span>
+        <span className="view-header-year">{year}</span>
+
       </h3>
       <button
         type="button"
