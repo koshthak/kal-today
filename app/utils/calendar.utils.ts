@@ -1,21 +1,16 @@
-// eslint-disable-next-line for-direction
 import moment, { Moment } from 'moment';
+import CAL_CONST from '../constants/calendar';
+
+export type calValueType = {
+  date: string;
+  monthName: string;
+  year: string;
+};
 
 export type dateArrayType = Array<{
   key: string;
   dateObj: Moment;
   class: string;
-}>;
-
-export type timeArrayType = Array<{
-  key: string;
-  timeObj: Moment;
-  class: string;
-  intervals: Array<{
-    key: string;
-    timeObj: Moment;
-    class: string;
-  }>;
 }>;
 
 export const getWeekShortName = (): Array<string> => moment.weekdaysShort(true);
@@ -31,6 +26,19 @@ export const getYear = (year: number): string =>
   moment()
     .year(year)
     .format('YYYY');
+
+export const getDate = (date: number): string =>
+  moment()
+    .date(date)
+    .format('DD');
+
+export const getCalValues = (dateObj: Moment): calValueType => {
+  const date = getDate(dateObj.date());
+  const monthName = getMonthName(dateObj.month());
+  const year = getYear(dateObj.year());
+
+  return { date, monthName, year };
+};
 
 export const getMonthDates = (year: number, month: number): dateArrayType => {
   const totalDays: dateArrayType = [];
@@ -62,7 +70,7 @@ export const getMonthDates = (year: number, month: number): dateArrayType => {
   }
 
   // for next month dates
-  for (let d = 1; d < 7 - lastDayOfMonth; d += 1) {
+  for (let d = 1; d < CAL_CONST.DAYS_IN_WEEK - lastDayOfMonth; d += 1) {
     totalDays.push({
       key: `next-date-${d}`,
       dateObj: moment(currentMonth).date(d),
@@ -71,30 +79,4 @@ export const getMonthDates = (year: number, month: number): dateArrayType => {
   }
 
   return totalDays;
-};
-
-export const getTimeLine = (interval = 15): timeArrayType => {
-  const timeLine: timeArrayType = [];
-  const start: Moment = moment().startOf('day');
-
-  for (let i = 0; i < 24; i += 1) {
-    const intervals = [...Array(60 / interval).keys()].map(value => {
-      return {
-        key: `interval-${value}`,
-        class: 'interval',
-        timeObj: moment(start)
-          .add(i, 'h')
-          .add(interval * value, 'm')
-      };
-    });
-
-    timeLine[i] = {
-      key: `time-${i}`,
-      class: 'time',
-      timeObj: moment(start).add(i, 'h'),
-      intervals: [...intervals]
-    };
-  }
-
-  return timeLine;
 };

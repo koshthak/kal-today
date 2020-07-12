@@ -3,11 +3,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import moment from 'moment';
 
-import { getMonthName, getYear } from '../../utils/calendar.utils';
+import { getCalValues } from '../../utils/calendar.utils';
 import { statusStateType } from '../../reducers/status.reducer';
-import { setStatusCurrtDate } from '../../actions/status.action';
+import { setStatusActiveDate } from '../../actions/status.action';
 import { rootStateType } from '../../reducers';
 import rightArrow from '../../../internals/img/right_arrow.svg';
+import ImageBtn from '../../components/imageBtn';
 
 import styles from './monthly.scss';
 
@@ -21,37 +22,33 @@ const MonthlyHeader: React.FC = () => {
 
   useEffect(() => {}, [t]);
 
-  const monthName: string = getMonthName(activeDate.month());
-  const year: string = getYear(activeDate.year());
+  const { monthName, year } = getCalValues(activeDate);
 
   const onPrevClick = () => {
-    dispatch(setStatusCurrtDate(moment(activeDate).subtract(1, 'M')));
+    dispatch(setStatusActiveDate(moment(activeDate).subtract(1, 'M')));
   };
 
   const onNextClick = () => {
-    dispatch(setStatusCurrtDate(moment(activeDate).add(1, 'M')));
+    dispatch(setStatusActiveDate(moment(activeDate).add(1, 'M')));
   };
 
   return (
     <div className={`view-header ${styles.header}`}>
-      <button
-        type="button"
-        className="transparent-btn view-header-btn"
+      <ImageBtn
+        imgSrc={rightArrow}
         onClick={onPrevClick}
-      >
-        <img src={rightArrow} className="prev-img" alt="prev-btn" />
-      </button>
+        className="view-header-btn"
+        imgClassName="prev-img"
+      />
       <h3 className="view-header-name">
         <span className="view-header-month">{monthName}</span>
         <span className="view-header-year">{year}</span>
       </h3>
-      <button
-        type="button"
-        className="transparent-btn view-header-btn"
+      <ImageBtn
+        imgSrc={rightArrow}
         onClick={onNextClick}
-      >
-        <img src={rightArrow} alt="next-btn" />
-      </button>
+        className="view-header-btn"
+      />
     </div>
   );
 };

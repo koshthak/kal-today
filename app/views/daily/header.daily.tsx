@@ -3,10 +3,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import moment from 'moment';
 
-import { getMonthName } from '../../utils/calendar.utils';
+import { getCalValues } from '../../utils/calendar.utils';
 import { statusStateType } from '../../reducers/status.reducer';
-import { setStatusCurrtDate } from '../../actions/status.action';
+import { setStatusActiveDate } from '../../actions/status.action';
 import { rootStateType } from '../../reducers';
+import ImageBtn from '../../components/imageBtn';
 import rightArrow from '../../../internals/img/right_arrow.svg';
 
 const DailyHeader: React.FC = () => {
@@ -19,43 +20,40 @@ const DailyHeader: React.FC = () => {
 
   useEffect(() => {}, [t]);
 
-  const monthName: string = getMonthName(activeDate.month());
+  const { date, monthName, year } = getCalValues(activeDate);
 
   const onPrevClick = () => {
-    dispatch(setStatusCurrtDate(moment(activeDate).subtract(1, 'd')));
+    dispatch(setStatusActiveDate(moment(activeDate).subtract(1, 'd')));
   };
 
   const onNextClick = () => {
-    dispatch(setStatusCurrtDate(moment(activeDate).add(1, 'd')));
+    dispatch(setStatusActiveDate(moment(activeDate).add(1, 'd')));
   };
 
   return (
     <div className="view-header">
-      <button
-        type="button"
-        className="transparent-btn view-header-btn"
+      <ImageBtn
+        imgSrc={rightArrow}
         onClick={onPrevClick}
-      >
-        <img src={rightArrow} className="prev-img" alt="prev-btn" />
-      </button>
+        className="view-header-btn"
+        imgClassName="prev-img"
+      />
       <h4 className="view-header-name">
         <span
           className={`view-header-date ${
             activeDate.isSame(today, 'day') ? 'today' : ''
           }`}
         >
-          {activeDate.date()}
+          {date}
         </span>
         <span className="view-header-month">{monthName}</span>
-        <span className="view-header-year">{activeDate.year()}</span>
+        <span className="view-header-year">{year}</span>
       </h4>
-      <button
-        type="button"
-        className="transparent-btn view-header-btn"
+      <ImageBtn
+        imgSrc={rightArrow}
         onClick={onNextClick}
-      >
-        <img src={rightArrow} alt="next-btn" />
-      </button>
+        className="view-header-btn"
+      />
     </div>
   );
 };
