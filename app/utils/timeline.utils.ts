@@ -13,28 +13,19 @@ export type timeArrayType = Array<{
   }>;
 }>;
 
-export type timeIndicatorPosType = {
-  approxIntervalPos: DOMRect | undefined;
-  timeElemPos: DOMRect | undefined;
-  timelineRefPos: DOMRect | undefined;
-  top: number;
-};
-
 export const getTimeLine = (interval = 15): timeArrayType => {
   const timeLine: timeArrayType = [];
   const start: Moment = moment().startOf('day');
 
   for (let i = 0; i < CAL_CONST.HOURS_IN_DAY; i += 1) {
     const intervals = [...Array(CAL_CONST.MINS_IN_HOUR / interval).keys()].map(
-      value => {
-        return {
-          key: `interval-${value}`,
-          class: 'interval',
-          timeObj: moment(start)
-            .add(i, 'h')
-            .add(interval * value, 'm')
-        };
-      }
+      value => ({
+        key: `interval-${value}`,
+        class: 'interval',
+        timeObj: moment(start)
+          .add(i, 'h')
+          .add(interval * value, 'm')
+      })
     );
 
     timeLine[i] = {
@@ -48,11 +39,11 @@ export const getTimeLine = (interval = 15): timeArrayType => {
   return timeLine;
 };
 
-export const getTimeIndicatorPos = (
+export const getTimeIndicatorTopPos = (
   today: Moment,
   timelineRef: React.RefObject<HTMLDivElement>,
   intervalsId: string
-): timeIndicatorPosType => {
+): number => {
   const hour = today.hour();
   const min = today.minute();
 
@@ -60,39 +51,26 @@ export const getTimeIndicatorPos = (
   const timeElem = timelineRef?.current?.children[hour];
   const timeElemIntervals = timeElem?.querySelector(`#${intervalsId}`);
 
-  // get elements positions
-  const timelineRefPos = timelineRef?.current?.getBoundingClientRect();
-  const timeElemPos = timeElem?.getBoundingClientRect();
-  let approxIntervalPos;
+  // get elements position from top
+  const timeElemTopPos = (timeElem as HTMLElement)?.offsetTop;
 
-  // get approx pos of interval
+  // get approx top pos of a interval
+  let approxIntervalTopPos = 0;
   const totalTimeElemIntervals = timeElemIntervals?.children?.length;
   if (totalTimeElemIntervals) {
-    const approxIntervalIndex =
-      Math.ceil(min / (CAL_CONST.MINS_IN_HOUR / totalTimeElemIntervals)) - 1;
-    approxIntervalPos = timeElemIntervals?.children[
+    const approxIntervalIndex = Math.ceil(
+      min / (CAL_CONST.MINS_IN_HOUR / totalTimeElemIntervals) - 1
+    );
+    approxIntervalTopPos = (timeElemIntervals?.children[
       approxIntervalIndex
-    ].getBoundingClientRect();
+    ] as HTMLElement).offsetTop;
   }
 
   // scroll active time element into view with offset
-  timeElem?.scrollIntoView();
-  if (timelineRef?.current) {
-    // eslint-disable-next-line no-param-reassign
-    timelineRef.current.scrollTop -= 100;
-  }
+  timeElem?.scrollIntoView(true);
 
   // calculate the top postion from the parent element
-  let top = 0;
-  const validTop = approxIntervalPos?.top || timeElemPos?.top;
-  if (validTop && timelineRefPos?.top) {
-    top = validTop - timelineRefPos.top;
-  }
+  const top = timeElemTopPos + approxIntervalTopPos;
 
-  return {
-    approxIntervalPos,
-    timeElemPos,
-    timelineRefPos,
-    top
-  };
+  return top;
 };

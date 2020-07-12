@@ -2,7 +2,10 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
-import { getTimeLine, getTimeIndicatorPos } from '../../utils/timeline.utils';
+import {
+  getTimeLine,
+  getTimeIndicatorTopPos
+} from '../../utils/timeline.utils';
 import { statusStateType } from '../../reducers/status.reducer';
 import { rootStateType } from '../../reducers';
 
@@ -22,12 +25,11 @@ const DailyTimeline: React.FC = () => {
 
   useEffect(() => {
     if (timelineRef?.current) {
-      const { top } = getTimeIndicatorPos(
+      const top = getTimeIndicatorTopPos(
         today,
         timelineRef,
         'timeline-intervals'
       );
-
       setTimeIndicatorTopPos(top);
     }
   }, [t]);
