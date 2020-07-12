@@ -170,6 +170,7 @@
     "@types/webpack": "^4.41.3",
     "@typescript-eslint/eslint-plugin": "^2.17.0",
     "@typescript-eslint/parser": "^2.17.0",
+    "@types/react-modal": "^3.10.6",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.0.6",
@@ -232,7 +233,6 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.12.1",
     "@hot-loader/react-dom": "^16.12.0",
-    "@types/react-modal": "^3.10.6",
     "devtron": "^1.4.0",
     "electron-debug": "^3.0.1",
     "electron-localshortcut": "^3.2.1",
@@ -241,7 +241,6 @@
     "i18next": "^19.4.5",
     "i18next-browser-languagedetector": "^4.2.0",
     "i18next-xhr-backend": "^3.2.2",
-    "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-hot-loader": "^4.12.19",

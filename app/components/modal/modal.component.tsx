@@ -1,8 +1,15 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import ReactModal from 'react-modal';
 
 ReactModal.setAppElement('#modal');
+
+type Props = {
+  title: string;
+  children?: React.ReactNode;
+  onRequestClose?: () => void;
+  closeModal: () => void;
+  isOpen: boolean;
+};
 
 const customStyles = {
   content: {
@@ -15,14 +22,10 @@ const customStyles = {
   }
 };
 
-const Modal: React.FC = (children, props) => {
-  const { closeModal, isOpen } = props;
-
+const Modal: React.FC<Props> = ({ children, ...props }: Props) => {
   return (
     <ReactModal
       // ariaHideApp={false}
-      isOpen={isOpen}
-      onRequestClose={closeModal}
       style={customStyles}
       // eslint-disable-next-line react/jsx-props-no-spreading
       {...props}
@@ -30,19 +33,6 @@ const Modal: React.FC = (children, props) => {
       {children}
     </ReactModal>
   );
-};
-
-Modal.propTypes = {
-  title: PropTypes.string,
-  children: PropTypes.shape({}),
-  onRequestClose: PropTypes.func.isRequired,
-  closeModal: PropTypes.func.isRequired,
-  isOpen: PropTypes.bool.isRequired
-};
-
-Modal.defaultProps = {
-  children: undefined,
-  title: ''
 };
 
 export default Modal;
