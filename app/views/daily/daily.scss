@@ -1,7 +1,46 @@
 @import './../../styles/configuration';
+
+$cell-height: 4rem;
+$cell-margin-left: 4rem;
+
 .timeline {
   height: 77vh;
   overflow: auto;
-  // &-time {
-  // }
+  position: relative;
+  margin-right: -1rem;
+  padding: 1rem 0;
+
+  &-time {
+    min-height: $cell-height;
+    position: relative;
+    margin-left: $cell-margin-left;
+    margin-right: 2rem;
+    border: 1px solid $gray-500;
+
+    &-head {
+      color: $gray-600;
+      font-family: $font-family-bold;
+      position: absolute;
+      top: -0.6rem;
+      left: -$cell-margin-left;
+    }
+  }
+
+  &-interval {
+    flex: 1;
+
+    &-wrapper {
+      display: flex;
+      height: $cell-height;
+      flex-direction: column;
+    }
+  }
+}
+
+.time-inicator {
+  height: 0.1rem;
+  background-color: $red;
+  position: absolute;
+  width: 94%;
+  right: 1.5rem;
 }

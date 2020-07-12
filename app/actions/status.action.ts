@@ -2,7 +2,7 @@ import { Moment } from 'moment';
 
 import {
   SET_STATUS_TODAY,
-  SET_STATUS_CURR_DATE,
+  SET_STATUS_ACTIVE_DATE,
   RESET_STATUS_DATES
 } from '../constants/actionType';
 import { statusDispatchType } from '../reducers/status.reducer';
@@ -16,11 +16,11 @@ export const setStatusTodaytDate = (date: Moment) => (
   });
 };
 
-export const setStatusCurrtDate = (date: Moment) => (
+export const setStatusActiveDate = (date: Moment) => (
   dispatch: statusDispatchType
 ) => {
   dispatch({
-    type: SET_STATUS_CURR_DATE,
+    type: SET_STATUS_ACTIVE_DATE,
     payload: date
   });
 };
