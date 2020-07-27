@@ -1,15 +1,15 @@
 import React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
+import WeeklyHeader from './header.weekly';
+import WeeklyTimeline from './timeline.weekly';
 
 type Props = RouteComponentProps;
 
 const WeeklyView: React.FC<Props> = ({ history }: Props) => {
   return (
     <div>
-      <h3>Weekly View</h3>
-      <button type="button" onClick={() => history.goBack()}>
-        go back
-      </button>
+      <WeeklyHeader />
+      <WeeklyTimeline />
     </div>
   );
 };

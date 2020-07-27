@@ -40,6 +40,25 @@ export const getCalValues = (dateObj: Moment): calValueType => {
   return { date, monthName, year };
 };
 
+export const getWeeklyDate = (dateObj: Moment) => {
+  const daysInWeek: any = [];
+
+  // console.log("dataObj", dateObj);
+
+//   var weekStartDate = moment('2013-01-01');
+// var weekEndDate = moment('2013-06-01');
+
+  let weekStartDate = moment(dateObj).startOf('week');
+  let weekEndDate = moment(dateObj).endOf('week');
+
+  for (let d = moment(weekStartDate); d.diff(weekEndDate, 'days') <= 0; moment(d).add(1, 'days')) {
+    // console.log(d.format('YYYY-MM-DD'));
+    daysInWeek.push(moment(d).add(1, 'd'));
+  };
+
+  return daysInWeek;
+}
+
 export const getMonthDates = (year: number, month: number): dateArrayType => {
   const totalDays: dateArrayType = [];
 
