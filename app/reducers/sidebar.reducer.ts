@@ -3,26 +3,26 @@ import { Dispatch as ReduxDispatch } from 'redux';
 
 import {
   SET_SIDEBAR_SELECTED_DATE,
-  SET_SIDEBAR_ACTIVE_DATE
+  SET_SIDEBAR_ACTIVE_DATE,
 } from '../constants/actionType';
 
-export type sidebarStateType = Readonly<{
+export type SidebarStateType = Readonly<{
   activeDate: Moment;
   selectedDate: Moment;
 }>;
 
-export type actionType =
+export type SidebarActionType =
   | { type: typeof SET_SIDEBAR_ACTIVE_DATE; payload: Moment }
   | { type: typeof SET_SIDEBAR_SELECTED_DATE; payload: Moment };
 
-export type sidebarDispatchType = ReduxDispatch<actionType>;
+export type SidebarDispatchType = ReduxDispatch<SidebarActionType>;
 
-const initialState: sidebarStateType = {
+const initialState: SidebarStateType = {
   activeDate: moment(),
-  selectedDate: moment()
+  selectedDate: moment(),
 };
 
-const sidebar = (state = initialState, action: actionType) => {
+const sidebar = (state = initialState, action: SidebarActionType) => {
   switch (action.type) {
     case SET_SIDEBAR_SELECTED_DATE:
       return { ...state, selectedDate: action };
