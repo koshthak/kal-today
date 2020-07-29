@@ -4,9 +4,9 @@ import { useTranslation } from 'react-i18next';
 import moment from 'moment';
 
 import { getCalValues } from '../../utils/calendar.utils';
-import { statusStateType } from '../../reducers/status.reducer';
+import { StatusStateType } from '../../reducers/status.reducer';
 import { setStatusActiveDate } from '../../actions/status.action';
-import { rootStateType } from '../../reducers';
+import { RootStateType } from '../../reducers';
 import rightArrow from '../../../internals/img/right_arrow.svg';
 import ImageBtn from '../../components/imageBtn';
 
@@ -15,8 +15,8 @@ import styles from './monthly.scss';
 const MonthlyHeader: React.FC = () => {
   const { t } = useTranslation();
 
-  const { activeDate }: statusStateType = useSelector(
-    (state: rootStateType) => state.status
+  const { activeDate }: StatusStateType = useSelector(
+    (state: RootStateType) => state.status
   );
   const dispatch = useDispatch();
 
