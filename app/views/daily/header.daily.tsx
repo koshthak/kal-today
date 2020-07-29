@@ -4,17 +4,17 @@ import { useTranslation } from 'react-i18next';
 import moment from 'moment';
 
 import { getCalValues } from '../../utils/calendar.utils';
-import { statusStateType } from '../../reducers/status.reducer';
+import { StatusStateType } from '../../reducers/status.reducer';
 import { setStatusActiveDate } from '../../actions/status.action';
-import { rootStateType } from '../../reducers';
+import { RootStateType } from '../../reducers';
 import ImageBtn from '../../components/imageBtn';
 import rightArrow from '../../../internals/img/right_arrow.svg';
 
 const DailyHeader: React.FC = () => {
   const { t } = useTranslation();
 
-  const { today, activeDate }: statusStateType = useSelector(
-    (state: rootStateType) => state.status
+  const { today, activeDate }: StatusStateType = useSelector(
+    (state: RootStateType) => state.status
   );
   const dispatch = useDispatch();
 

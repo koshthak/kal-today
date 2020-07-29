@@ -4,10 +4,10 @@ import { useTranslation } from 'react-i18next';
 
 import {
   getTimeLine,
-  getTimeIndicatorTopPos
+  getTimeIndicatorTopPos,
 } from '../../utils/timeline.utils';
-import { statusStateType } from '../../reducers/status.reducer';
-import { rootStateType } from '../../reducers';
+import { StatusStateType } from '../../reducers/status.reducer';
+import { RootStateType } from '../../reducers';
 
 import styles from './daily.scss';
 
@@ -16,8 +16,8 @@ const DailyTimeline: React.FC = () => {
 
   const [timeIndicatorTopPos, setTimeIndicatorTopPos] = useState(0);
 
-  const { today }: statusStateType = useSelector(
-    (state: rootStateType) => state.status
+  const { today }: StatusStateType = useSelector(
+    (state: RootStateType) => state.status
   );
 
   const timeline = getTimeLine();
@@ -32,11 +32,11 @@ const DailyTimeline: React.FC = () => {
       );
       setTimeIndicatorTopPos(top);
     }
-  }, [t]);
+  }, [t, today]);
 
   return (
     <div className={styles.timeline} ref={timelineRef}>
-      {timeline.map(time => (
+      {timeline.map((time) => (
         <div className={styles['timeline-time']} key={time.key}>
           <span className={styles['timeline-time-head']}>
             {time.timeObj.format('h a')}
@@ -45,7 +45,7 @@ const DailyTimeline: React.FC = () => {
             id="timeline-intervals"
             className={styles['timeline-interval-wrapper']}
           >
-            {time.intervals.map(i => (
+            {time.intervals.map((i) => (
               <div className={styles['timeline-interval']} key={i.key} />
             ))}
           </div>

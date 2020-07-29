@@ -3,12 +3,12 @@ import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
 import {
-  dateArrayType,
+  DateArrayType,
   getMonthDates,
-  getWeekName
+  getWeekName,
 } from '../../utils/calendar.utils';
-import { rootStateType } from '../../reducers';
-import { statusStateType } from '../../reducers/status.reducer';
+import { RootStateType } from '../../reducers';
+import { StatusStateType } from '../../reducers/status.reducer';
 import CAL_CONST from '../../constants/calendar';
 
 import styles from './monthly.scss';
@@ -16,13 +16,13 @@ import styles from './monthly.scss';
 const MonthlyDates: React.FC = () => {
   const { t } = useTranslation();
 
-  const { today, activeDate }: statusStateType = useSelector(
-    (state: rootStateType) => state.status
+  const { today, activeDate }: StatusStateType = useSelector(
+    (state: RootStateType) => state.status
   );
 
   useEffect(() => {}, [t]);
 
-  const days: dateArrayType = getMonthDates(
+  const days: DateArrayType = getMonthDates(
     activeDate.year(),
     activeDate.month()
   );
@@ -32,7 +32,7 @@ const MonthlyDates: React.FC = () => {
 
   return (
     <div className="row">
-      {weekNames.map(d => (
+      {weekNames.map((d) => (
         <div key={d} className={`col ${styles.weekday}`}>
           {d}
         </div>
@@ -48,7 +48,7 @@ const MonthlyDates: React.FC = () => {
               isMaxRowsView ? styles['max-rows-view'] : '',
               e.dateObj.isSame(today, 'day') ? styles.today : '',
               e.dateObj.isBefore(today, 'day') ? styles.prevdays : '',
-              styles[e.class]
+              styles[e.class],
             ].join(' ')}
           >
             {e.dateObj.format('D')}

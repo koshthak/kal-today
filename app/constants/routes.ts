@@ -1,15 +1,15 @@
-export type routeTypes = {
+export type RouteTypes = {
   HOME: string;
   MONTHLY: string;
   WEEKLY: string;
   DAILY: string;
 };
 
-const ROUTES: routeTypes = {
+const ROUTES: RouteTypes = {
   HOME: '/',
   MONTHLY: '/monthly',
   WEEKLY: '/weekly',
-  DAILY: '/daily'
+  DAILY: '/daily',
 };
 
 export default ROUTES;

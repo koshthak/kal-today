@@ -2,7 +2,7 @@ import React from 'react';
 import moment, { Moment } from 'moment';
 import CAL_CONST from '../constants/calendar';
 
-export type timeArrayType = Array<{
+export type TimeArrayType = Array<{
   key: string;
   timeObj: Moment;
   class: string;
@@ -13,18 +13,18 @@ export type timeArrayType = Array<{
   }>;
 }>;
 
-export const getTimeLine = (interval = 15): timeArrayType => {
-  const timeLine: timeArrayType = [];
+export const getTimeLine = (interval = 15): TimeArrayType => {
+  const timeLine: TimeArrayType = [];
   const start: Moment = moment().startOf('day');
 
   for (let i = 0; i < CAL_CONST.HOURS_IN_DAY; i += 1) {
     const intervals = [...Array(CAL_CONST.MINS_IN_HOUR / interval).keys()].map(
-      value => ({
+      (value) => ({
         key: `interval-${value}`,
         class: 'interval',
         timeObj: moment(start)
           .add(i, 'h')
-          .add(interval * value, 'm')
+          .add(interval * value, 'm'),
       })
     );
 
@@ -32,7 +32,7 @@ export const getTimeLine = (interval = 15): timeArrayType => {
       key: `time-${i}`,
       class: 'time',
       timeObj: moment(start).add(i, 'h'),
-      intervals: [...intervals]
+      intervals: [...intervals],
     };
   }
 
@@ -67,7 +67,11 @@ export const getTimeIndicatorTopPos = (
   }
 
   // scroll active time element into view with offset
-  timeElem?.scrollIntoView(true);
+  timeElem?.scrollIntoView({
+    behavior: 'smooth',
+    block: 'center',
+    inline: 'nearest',
+  });
 
   // calculate the top postion from the parent element
   const top = timeElemTopPos + approxIntervalTopPos;

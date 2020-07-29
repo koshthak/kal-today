@@ -11,7 +11,7 @@ const ImageBtn: React.FC<Props> = ({
   imgSrc,
   onClick,
   className,
-  imgClassName
+  imgClassName,
 }: Props) => {
   return (
     <button
