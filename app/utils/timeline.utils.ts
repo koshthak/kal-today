@@ -13,6 +13,13 @@ export type TimeArrayType = Array<{
   }>;
 }>;
 
+export type WeekTimeArrayType = Array<{
+  key: string;
+  class: string;
+  dateObj: Moment;
+  timeline: TimeArrayType;
+}>;
+
 export const getTimeLine = (interval = 15): TimeArrayType => {
   const timeLine: TimeArrayType = [];
   const start: Moment = moment().startOf('day');
@@ -38,30 +45,44 @@ export const getTimeLine = (interval = 15): TimeArrayType => {
 
   return timeLine;
 };
+export const getWeekTimeLine = (
+  dateObj: Moment,
+  interval = 15
+): WeekTimeArrayType => {
+  const singleTimeLine = getTimeLine(interval);
+  const weekTimeLimeData = [...Array(CAL_CONST.DAYS_IN_WEEK).keys()].map(
+    (value) => ({
+      key: `week-day-${value + 1}`,
+      dateObj: moment(dateObj).startOf('w').add(value, 'd'),
+      class: 'week-day',
+      timeline: singleTimeLine,
+    })
+  );
+  return weekTimeLimeData;
+};
 
 export const getTimeIndicatorTopPos = (
   today: Moment,
   timelineRef: React.RefObject<HTMLDivElement>,
-  intervalsId: string
+  intervalsClass: string
 ): number => {
   const hour = today.hour();
   const min = today.minute();
 
   // get elements
   const timeElem = timelineRef?.current?.children[hour];
-  const timeElemIntervals = timeElem?.querySelector(`#${intervalsId}`);
+  const timeElemIntervals = timeElem?.getElementsByClassName(intervalsClass);
 
   // get elements position from top
   const timeElemTopPos = (timeElem as HTMLElement)?.offsetTop;
 
   // get approx top pos of a interval
   let approxIntervalTopPos = 0;
-  const totalTimeElemIntervals = timeElemIntervals?.children?.length;
-  if (totalTimeElemIntervals) {
+  if (timeElemIntervals?.length) {
     const approxIntervalIndex = Math.ceil(
-      min / (CAL_CONST.MINS_IN_HOUR / totalTimeElemIntervals) - 1
+      min / (CAL_CONST.MINS_IN_HOUR / timeElemIntervals.length) - 1
     );
-    approxIntervalTopPos = (timeElemIntervals?.children[
+    approxIntervalTopPos = (timeElemIntervals[
       approxIntervalIndex
     ] as HTMLElement).offsetTop;
   }

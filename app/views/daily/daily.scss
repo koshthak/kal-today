@@ -4,7 +4,7 @@ $cell-height: 4rem;
 $cell-margin-left: 4rem;
 
 .timeline {
-  height: 77vh;
+  height: calc(100% - #{$view-header-height});
   overflow: auto;
   position: relative;
   margin-right: -1rem;

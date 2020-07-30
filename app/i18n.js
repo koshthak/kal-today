@@ -46,7 +46,7 @@ i18n
 
   .init({
     lng: 'en',
-    fallbackLng, // if user computer language is not on the list of available languages, than we will be using the fallback language specified earlier
+    fallbackLng,
     debug: true,
     backend: {
       loadPath: `./locales/{{lng}}/{{ns}}.json`,
@@ -56,8 +56,9 @@ i18n
     interpolation: {
       escapeValue: false,
       format: (value, format, lng) => {
-        if (format === 'moment')
+        if (format === 'moment') {
           return moment(value.date).locale(lng).format(value.format);
+        }
         return value;
       },
     },

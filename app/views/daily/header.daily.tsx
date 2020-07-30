@@ -20,7 +20,7 @@ const DailyHeader: React.FC = () => {
 
   useEffect(() => {}, [t]);
 
-  const { date, monthName, year } = getCalValues(activeDate);
+  const { date, monthShortName, year } = getCalValues(activeDate);
 
   const onPrevClick = () => {
     dispatch(setStatusActiveDate(moment(activeDate).subtract(1, 'd')));
@@ -46,7 +46,7 @@ const DailyHeader: React.FC = () => {
         >
           {date}
         </span>
-        <span className="view-header-month">{monthName}</span>
+        <span className="view-header-month">{monthShortName}</span>
         <span className="view-header-year">{year}</span>
       </h4>
       <ImageBtn

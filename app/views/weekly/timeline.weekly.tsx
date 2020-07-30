@@ -3,27 +3,26 @@ import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
 import {
-  getTimeLine,
-  getTimeIndicatorTopPos
+  getTimeIndicatorTopPos,
+  getWeekTimeLine,
 } from '../../utils/timeline.utils';
-import { statusStateType } from '../../reducers/status.reducer';
-import { rootStateType } from '../../reducers';
+import { StatusStateType } from '../../reducers/status.reducer';
+import { RootStateType } from '../../reducers';
 
 import styles from './weekly.scss';
-import { getWeeklyDate } from "../../utils/calendar.utils";
+import { getWeekName } from '../../utils/calendar.utils';
 
 const WeeklyTimeline: React.FC = () => {
   const { t } = useTranslation();
 
   const [timeIndicatorTopPos, setTimeIndicatorTopPos] = useState(0);
 
-  const { today, activeDate }: statusStateType = useSelector(
-    (state: rootStateType) => state.status
+  const { today, activeDate }: StatusStateType = useSelector(
+    (state: RootStateType) => state.status
   );
 
-  const dayOfWeek = getWeeklyDate(activeDate);
-     
-  const timeline = getTimeLine();
+  const weekTimeline = getWeekTimeLine(activeDate);
+  const weekNames = getWeekName();
   const timelineRef: React.RefObject<HTMLDivElement> = useRef(null);
 
   useEffect(() => {
@@ -31,41 +30,54 @@ const WeeklyTimeline: React.FC = () => {
       const top = getTimeIndicatorTopPos(
         today,
         timelineRef,
-        'timeline-intervals'
+        'week-day-intervals'
       );
       setTimeIndicatorTopPos(top);
     }
-  }, [t]);
+  }, [t, today]);
 
   return (
-    <div>
-      {dayOfWeek.map((x: any)=> {
-        return(
-        <div>{x.format('YYYY-MM-DD')}</div>
-        )})}
-      {console.log("dayOfWeek", dayOfWeek)}
-    </div>
-    // <div className={styles.timeline} ref={timelineRef}>
-    //   {timeline.map(time => (
-    //     <div className={styles['timeline-time']} key={time.key}>
-    //       <span className={styles['timeline-time-head']}>
-    //         {time.timeObj.format('h a')}
-    //       </span>
-    //       <div
-    //         id="timeline-intervals"
-    //         className={styles['timeline-interval-wrapper']}
-    //       >
-    //         {time.intervals.map(i => (
-    //           <div className={styles['timeline-interval']} key={i.key} />
-    //         ))}
-    //       </div>
-    //     </div>
-    //   ))}
-    //   <div
-    //     className={styles['time-inicator']}
-    //     style={{ top: timeIndicatorTopPos }}
-    //   />
-    // </div>
+    <>
+      <div className={styles['week-day-header-wrapper']}>
+        {weekNames.map((d) => (
+          <div key={d} className={styles['week-day-header']}>
+            {d}
+          </div>
+        ))}
+      </div>
+
+      <div className={styles.week}>
+        {weekTimeline.map((weekday, weekInx) => (
+          <div
+            key={weekday.key}
+            ref={timelineRef}
+            className={styles[weekday.class]}
+          >
+            {weekday.timeline.map((time) => (
+              <div className={styles['week-day-time']} key={time.key}>
+                {!weekInx && (
+                  <span className={styles['week-day-time-head']}>
+                    {time.timeObj.format('h a')}
+                  </span>
+                )}
+                <div className={styles['week-day-interval-wrapper']}>
+                  {time.intervals.map((i) => (
+                    <div
+                      className={`week-day-intervals ${styles['week-day-interval']}`}
+                      key={i.key}
+                    />
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        ))}
+        <div
+          className={styles['time-inicator']}
+          style={{ top: timeIndicatorTopPos }}
+        />
+      </div>
+    </>
   );
 };
 
