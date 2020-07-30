@@ -4,7 +4,10 @@ import CAL_CONST from '../constants/calendar';
 export type CalValueType = {
   date: string;
   monthName: string;
+  monthShortName: string;
   year: string;
+  weekStartDate: string;
+  weekEndDate: string;
 };
 
 export type DateArrayType = Array<{
@@ -20,18 +23,27 @@ export const getWeekName = (): Array<string> => moment.weekdays(true);
 export const getMonthName = (month: number): string =>
   moment().month(month).format('MMMM');
 
+export const getMonthShortName = (month: number): string =>
+  moment().month(month).format('MMM');
+
 export const getYear = (year: number): string =>
   moment().year(year).format('YYYY');
 
 export const getDate = (date: number): string =>
   moment().date(date).format('DD');
 
+export const getDayName = (date: number): string =>
+  moment().date(date).format('dddd');
+
 export const getCalValues = (dateObj: Moment): CalValueType => {
   const date = getDate(dateObj.date());
   const monthName = getMonthName(dateObj.month());
+  const monthShortName = getMonthShortName(dateObj.month());
   const year = getYear(dateObj.year());
+  const weekStartDate = getDate(moment(dateObj).startOf('w').date());
+  const weekEndDate = getDate(moment(dateObj).endOf('w').date());
 
-  return { date, monthName, year };
+  return { date, monthName, monthShortName, year, weekStartDate, weekEndDate };
 };
 
 export const getMonthDates = (year: number, month: number): DateArrayType => {

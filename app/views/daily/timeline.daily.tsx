@@ -41,12 +41,12 @@ const DailyTimeline: React.FC = () => {
           <span className={styles['timeline-time-head']}>
             {time.timeObj.format('h a')}
           </span>
-          <div
-            id="timeline-intervals"
-            className={styles['timeline-interval-wrapper']}
-          >
+          <div className={styles['timeline-interval-wrapper']}>
             {time.intervals.map((i) => (
-              <div className={styles['timeline-interval']} key={i.key} />
+              <div
+                className={`timeline-intervals ${styles['timeline-interval']}`}
+                key={i.key}
+              />
             ))}
           </div>
         </div>
