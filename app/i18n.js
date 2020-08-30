@@ -30,7 +30,7 @@ const options = {
   htmlTag: document.documentElement,
 
   // only detect languages that are in the whitelist
-  checkWhitelist: true
+  checkWhitelist: true,
 };
 
 i18n
@@ -40,29 +40,28 @@ i18n
 
   .use(initReactI18next) // pass the i18n instance to react-i18next.
 
-  .on('languageChanged', lng => {
+  .on('languageChanged', (lng) => {
     moment.locale(lng);
   })
 
   .init({
     lng: 'en',
-    fallbackLng, // if user computer language is not on the list of available languages, than we will be using the fallback language specified earlier
+    fallbackLng,
     debug: true,
     backend: {
-      loadPath: `./locales/{{lng}}/{{ns}}.json`
+      loadPath: `./locales/{{lng}}/{{ns}}.json`,
     },
     whitelist: availableLanguages,
     detection: options,
     interpolation: {
       escapeValue: false,
       format: (value, format, lng) => {
-        if (format === 'moment')
-          return moment(value.date)
-            .locale(lng)
-            .format(value.format);
+        if (format === 'moment') {
+          return moment(value.date).locale(lng).format(value.format);
+        }
         return value;
-      }
-    }
+      },
+    },
   });
 
 export default i18n;

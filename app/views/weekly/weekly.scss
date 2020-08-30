@@ -3,18 +3,33 @@
 $cell-height: 4rem;
 $cell-margin-left: 4rem;
 
-.timeline {
-  height: calc(100% - #{$view-header-height});
+.week-day-header-wrapper {
+  display: flex;
+  .week-day-header {
+    flex: 1;
+    text-align: center;
+    font-family: $font-family-bold;
+  }
+}
+
+.week {
+  height: calc(100% - #{$view-header-height} - 2rem);
   overflow: auto;
   position: relative;
   margin-right: -1rem;
-  padding: 1rem 0;
+  padding: 1rem 2rem;
+  display: flex;
+  padding-left: 5rem;
+}
 
+.week-day {
+  flex: 1;
+  &-date {
+    text-align: center;
+  }
   &-time {
     min-height: $cell-height;
     position: relative;
-    margin-left: $cell-margin-left;
-    margin-right: 2rem;
     border: 1px solid $gray-500;
 
     &-head {

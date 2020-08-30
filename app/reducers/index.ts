@@ -1,17 +1,17 @@
 import { combineReducers } from 'redux';
 
-import sidebar, { sidebarStateType } from './sidebar.reducer';
-import status, { statusStateType } from './status.reducer';
+import sidebar, { SidebarStateType } from './sidebar.reducer';
+import status, { StatusStateType } from './status.reducer';
 
-export type rootStateType = Readonly<{
-  sidebar: sidebarStateType;
-  status: statusStateType;
+export type RootStateType = Readonly<{
+  sidebar: SidebarStateType;
+  status: StatusStateType;
 }>;
 
 const createRootReducer = () =>
   combineReducers({
     sidebar,
-    status
+    status,
   });
 
 export default createRootReducer;

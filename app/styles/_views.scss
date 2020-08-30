@@ -1,10 +1,9 @@
 /** header styles  **/
 .view-header {
   text-align: center;
-  padding-top: 1.5rem;
-  padding-bottom: 1rem;
   display: flex;
   align-items: center;
+  height: $view-header-height;
 
   &-name {
     font-family: $font-family-light;
