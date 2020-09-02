@@ -77,7 +77,7 @@ export const getMonthDates = (year: number, month: number): DateArrayType => {
   for (let d = 1; d < CAL_CONST.DAYS_IN_WEEK - lastDayOfMonth; d += 1) {
     totalDays.push({
       key: `next-date-${d}`,
-      dateObj: moment(currentMonth).date(d),
+      dateObj: moment(currentMonth).add(1, 'm').date(d),
       class: 'next-month',
     });
   }

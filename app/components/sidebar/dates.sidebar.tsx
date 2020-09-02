@@ -12,12 +12,16 @@ import {
 import styles from './sidebar.scss';
 import { SidebarStateType } from '../../reducers/sidebar.reducer';
 import { RootStateType } from '../../reducers';
+import { StatusStateType } from '../../reducers/status.reducer';
 
 const SidebarDates: React.FC = () => {
   const { t } = useTranslation();
 
   const { activeDate }: SidebarStateType = useSelector(
     (state: RootStateType) => state.sidebar
+  );
+  const { today }: StatusStateType = useSelector(
+    (state: RootStateType) => state.status
   );
 
   const year = activeDate.year();
@@ -46,7 +50,7 @@ const SidebarDates: React.FC = () => {
             {i % 7 === 0 && <div className="w-100" />}
             <div
               className={`col text-center ${
-                e.dateObj.isSame(moment(), 'day') ? styles.today : ''
+                e.dateObj.isSame(today, 'day') ? styles.today : ''
               } ${styles[e.class]}`}
             >
               {e.dateObj.format('D')}

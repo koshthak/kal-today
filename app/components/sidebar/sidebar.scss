@@ -72,3 +72,18 @@
   color: $gray-600;
   margin: 10px 0;
 }
+
+.event {
+  display: flex;
+  padding: 1rem;
+  padding-top: 3rem;
+  flex-wrap: wrap;
+
+    .eventTitle{
+      flex: 2;
+    }
+
+    .modalDiv{
+      float: right;
+    }
+}
