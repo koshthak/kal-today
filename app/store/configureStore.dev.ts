@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
-import createRootReducer from '../reducers';
+import { persistedReducer } from '../reducers';
 import * as sidebarActions from '../actions/sidebar.action';
 
 declare global {
@@ -18,8 +18,6 @@ declare global {
     };
   }
 }
-
-const rootReducer = createRootReducer();
 
 const configureStore = () => {
   // Redux Configuration
@@ -59,7 +57,7 @@ const configureStore = () => {
   const enhancer = composeEnhancers(...enhancers);
 
   // Create Store
-  const store = createStore(rootReducer, {}, enhancer);
+  const store = createStore(persistedReducer, {}, enhancer);
 
   if (module.hot) {
     module.hot.accept(
@@ -69,7 +67,7 @@ const configureStore = () => {
     );
   }
 
-  return store;
+  return { store, enhancer };
 };
 
 export default configureStore;

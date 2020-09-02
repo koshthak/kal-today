@@ -17,9 +17,7 @@ const Sidebar: React.FC = () => {
       <SidebarHeader />
       <SidebarDates />
       <div className={styles.event}>
-        <div className={styles.eventTitle}>
-          Add a new Event
-        </div>
+        <div className={styles.eventTitle}>Add a new Event</div>
         <div className={styles.modalDiv}>
           <Event />
         </div>

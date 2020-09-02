@@ -5,8 +5,8 @@ import addImg from '../../../internals/img/plus-white.svg';
 
 const openBtn = {
   height: 30,
-  cursor:'pointer',
-}
+  cursor: 'pointer',
+};
 
 const Event: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,19 +25,29 @@ const Event: React.FC = () => {
           <div className="row m-0">
             <label className="p-0">Title</label>
             <div className="mainInputDiv">
-              <input className="effect1" type="text" placeholder="Enter title" />
-              <span className="focusbg"></span>
+              <input
+                className="effect1"
+                type="text"
+                placeholder="Enter title"
+              />
+              <span className="focusbg" />
             </div>
 
             <label className="mt-3 p-0">Description</label>
             <div className="mainInputDiv">
-              <textarea rows="5" className="effect1" type="text" placeholder="Enter description" />
-              <span className="focusbg"></span>
+              <textarea
+                rows={5}
+                className="effect1"
+                placeholder="Enter description"
+              />
+              <span className="focusbg" />
             </div>
-
           </div>
         </Modal>
-        <img src={addImg} style={openBtn} onClick={openModal} alt="open-btn"/>
+        {/*  eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
+        <div onClick={openModal} onKeyDown={openModal}>
+          <img src={addImg} style={openBtn} alt="open-btn" />
+        </div>
       </div>
     </>
   );
