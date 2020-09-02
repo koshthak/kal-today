@@ -24,8 +24,8 @@ const SidebarDates: React.FC = () => {
     (state: RootStateType) => state.status
   );
 
-  const year = moment(activeDate).year();
-  const month = moment(activeDate).month();
+  const year = activeDate.year();
+  const month = activeDate.month();
 
   const days: DateArrayType = getMonthDates(year, month);
   const weekNames: Array<string> = getWeekShortName();
