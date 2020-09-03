@@ -4,6 +4,12 @@
 @import './btn';
 @import './views';
 
+// @import 'react-date-range/dist/styles.css'; // main style file
+// @import 'react-date-range/dist/theme/default.css'; // theme css file
+
+@import url('/node_modules/react-date-range/dist/styles.css');
+@import url('/node_modules/react-date-range/dist/theme/default.css');
+
 #root {
   display: flex;
   height: 100vh;
