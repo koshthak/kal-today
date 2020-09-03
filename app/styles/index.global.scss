@@ -7,8 +7,8 @@
 // @import 'react-date-range/dist/styles.css'; // main style file
 // @import 'react-date-range/dist/theme/default.css'; // theme css file
 
-@import url('/node_modules/react-date-range/dist/styles.css');
-@import url('/node_modules/react-date-range/dist/theme/default.css');
+@import './date-range-style.scss';
+@import './date-range-theme.scss';
 
 #root {
   display: flex;
