@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import Modal from '../modal/modal.component';
+import DatePicker from '../datePicker/datePicker.component';
 import addImg from '../../../internals/img/plus-white.svg';
 
 const openBtn = {
@@ -40,6 +41,12 @@ const Event: React.FC = () => {
                 className="effect1"
                 placeholder="Enter description"
               />
+              <span className="focusbg" />
+            </div>
+
+            <label className="mt-3 p-0">Choose a date</label>
+            <div className="mainInputDiv">
+              <DatePicker/>
               <span className="focusbg" />
             </div>
           </div>

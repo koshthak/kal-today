@@ -23,3 +23,7 @@ declare module '\*.scss' {
   };
   export default content;
 }
+
+declare module 'react-date-range';
+
+declare module 'react-modal';
