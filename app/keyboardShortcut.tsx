@@ -38,6 +38,7 @@ const KeyboardShortcut: React.FC<Props> = ({ history }: Props) => {
       electronLocalshortcut.unregisterAll(windowRef);
     };
   }, []);
+
   return <></>;
 };
 

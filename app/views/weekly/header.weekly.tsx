@@ -3,31 +3,32 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import moment from 'moment';
 
-import { getCalValues } from '../../utils/calendar.utils';
-import { StatusStateType } from '../../reducers/status.reducer';
-import { setStatusActiveDate } from '../../actions/status.action';
 import { RootStateType } from '../../reducers';
 import ImageBtn from '../../components/imageBtn';
 import rightArrow from '../../../internals/img/right_arrow.svg';
+import { setStatusActiveDate } from '../../actions/status.action';
+import { StatusStateType } from '../../reducers/status.reducer';
+import { getCalValues } from '../../utils/calendar.utils';
 
-const DailyHeader: React.FC = () => {
+const WeeklyHeader: React.FC = () => {
   const { t } = useTranslation();
 
-  const { today, activeDate }: StatusStateType = useSelector(
+  const { activeDate, today }: StatusStateType = useSelector(
     (state: RootStateType) => state.status
   );
   const dispatch = useDispatch();
+  const { weekStartDate, weekEndDate, monthShortName, year } = getCalValues(
+    activeDate
+  );
 
   useEffect(() => {}, [t]);
 
-  const { date, monthShortName, year } = getCalValues(activeDate);
-
   const onPrevClick = () => {
-    dispatch(setStatusActiveDate(moment(activeDate).subtract(1, 'd')));
+    dispatch(setStatusActiveDate(moment(activeDate).subtract(1, 'w')));
   };
 
   const onNextClick = () => {
-    dispatch(setStatusActiveDate(moment(activeDate).add(1, 'd')));
+    dispatch(setStatusActiveDate(moment(activeDate).add(1, 'w')));
   };
 
   return (
@@ -38,13 +39,16 @@ const DailyHeader: React.FC = () => {
         className="view-header-btn"
         imgClassName="prev-img"
       />
+
       <h4 className="view-header-name">
-        <span
-          className={`view-header-date ${
-            activeDate.isSame(today, 'day') ? 'today' : ''
-          }`}
-        >
-          {date}
+        <span style={{ fontWeight: 'bold' }}>
+          <span
+            className={`view-header-date ${
+              activeDate.isSame(today, 'day') ? 'today' : ''
+            }`}
+          >
+            {`${weekStartDate} - ${weekEndDate}`}
+          </span>
         </span>
         <span className="view-header-month">{monthShortName}</span>
         <span className="view-header-year">{year}</span>
@@ -58,4 +62,4 @@ const DailyHeader: React.FC = () => {
   );
 };
 
-export default DailyHeader;
+export default WeeklyHeader;

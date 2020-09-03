@@ -1,6 +1,7 @@
 import React, { Fragment, Suspense } from 'react';
 import { render } from 'react-dom';
 import { AppContainer as ReactHotAppContainer } from 'react-hot-loader';
+import { PersistGate } from 'redux-persist/integration/react';
 import { Provider } from 'react-redux';
 
 import configureStore from './store/configureStore';
@@ -11,13 +12,16 @@ import './styles/index.global.scss';
 import Navigation from './navigation';
 
 const AppContainer = process.env.PLAIN_HMR ? Fragment : ReactHotAppContainer;
+const { persistor, store } = configureStore();
 
 document.addEventListener('DOMContentLoaded', () =>
   render(
     <Suspense fallback={<div>Loading</div>}>
       <AppContainer>
-        <Provider store={configureStore()}>
-          <Navigation />
+        <Provider store={store}>
+          <PersistGate loading={null} persistor={persistor}>
+            <Navigation />
+          </PersistGate>
         </Provider>
       </AppContainer>
     </Suspense>,

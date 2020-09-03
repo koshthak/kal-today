@@ -4,26 +4,30 @@ import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
 import {
-  dateArrayType,
+  DateArrayType,
   getMonthDates,
   getWeekShortName,
-  getMonthName
-} from '../../utils/dates.utils';
+  getMonthName,
+} from '../../utils/calendar.utils';
 import styles from './sidebar.scss';
-import { sidebarStateType } from '../../reducers/sidebar.reducer';
-import { rootStateType } from '../../reducers';
+import { SidebarStateType } from '../../reducers/sidebar.reducer';
+import { RootStateType } from '../../reducers';
+import { StatusStateType } from '../../reducers/status.reducer';
 
 const SidebarDates: React.FC = () => {
   const { t } = useTranslation();
 
-  const { activeDate }: sidebarStateType = useSelector(
-    (state: rootStateType) => state.sidebar
+  const { activeDate }: SidebarStateType = useSelector(
+    (state: RootStateType) => state.sidebar
+  );
+  const { today }: StatusStateType = useSelector(
+    (state: RootStateType) => state.status
   );
 
   const year = activeDate.year();
   const month = activeDate.month();
 
-  const days: dateArrayType = getMonthDates(year, month);
+  const days: DateArrayType = getMonthDates(year, month);
   const weekNames: Array<string> = getWeekShortName();
   const monthName: string = getMonthName(month);
 
@@ -32,11 +36,11 @@ const SidebarDates: React.FC = () => {
       <h2 className={`text-center ${styles.month}`}>{monthName}</h2>
       <h4 className={`text-center ${styles.year}`}>
         {t('moment', {
-          value: { date: moment().year(year), format: 'YYYY' }
+          value: { date: moment().year(year), format: 'YYYY' },
         })}
       </h4>
       <div className="row">
-        {weekNames.map(d => (
+        {weekNames.map((d) => (
           <div key={d} className={`col ${styles.weekday}`}>
             {d}
           </div>
@@ -46,7 +50,7 @@ const SidebarDates: React.FC = () => {
             {i % 7 === 0 && <div className="w-100" />}
             <div
               className={`col text-center ${
-                e.dateObj.isSame(moment(), 'day') ? styles.today : ''
+                e.dateObj.isSame(today, 'day') ? styles.today : ''
               } ${styles[e.class]}`}
             >
               {e.dateObj.format('D')}

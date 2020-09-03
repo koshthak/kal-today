@@ -2,31 +2,31 @@ import { Moment } from 'moment';
 
 import {
   SET_STATUS_TODAY,
-  SET_STATUS_CURR_DATE,
-  RESET_STATUS_DATES
+  SET_STATUS_ACTIVE_DATE,
+  RESET_STATUS_DATES,
 } from '../constants/actionType';
-import { statusDispatchType } from '../reducers/status.reducer';
+import { StatusDispatchType } from '../reducers/status.reducer';
 
 export const setStatusTodaytDate = (date: Moment) => (
-  dispatch: statusDispatchType
+  dispatch: StatusDispatchType
 ) => {
   dispatch({
     type: SET_STATUS_TODAY,
-    payload: date
+    payload: date,
   });
 };
 
-export const setStatusCurrtDate = (date: Moment) => (
-  dispatch: statusDispatchType
+export const setStatusActiveDate = (date: Moment) => (
+  dispatch: StatusDispatchType
 ) => {
   dispatch({
-    type: SET_STATUS_CURR_DATE,
-    payload: date
+    type: SET_STATUS_ACTIVE_DATE,
+    payload: date,
   });
 };
 
-export const resetStatus = () => (dispatch: statusDispatchType) => {
+export const resetStatus = () => (dispatch: StatusDispatchType) => {
   dispatch({
-    type: RESET_STATUS_DATES
+    type: RESET_STATUS_DATES,
   });
 };
