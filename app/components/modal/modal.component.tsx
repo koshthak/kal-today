@@ -23,18 +23,18 @@ const customStyles = {
     height: '70%',
     width: '70%',
     transform: 'translate(-50%, -50%)',
-    // border: '2px solid black', 
-  }
+    // border: '2px solid black',
+  },
 };
 
 const closeBtn = {
   float: 'right',
   height: 20,
-}
+};
 
 const childMainDiv = {
   marginTop: 20,
-}
+};
 
 const Modal: React.FC<Props> = ({ children, ...props }: Props) => {
   const { closeModal } = props;
@@ -46,11 +46,14 @@ const Modal: React.FC<Props> = ({ children, ...props }: Props) => {
       {...props}
     >
       <div>
-        <img src={closeImg} style={closeBtn} onClick={closeModal} alt="close-btn"/>
+        <img
+          src={closeImg}
+          style={closeBtn}
+          onClick={closeModal}
+          alt="close-btn"
+        />
       </div>
-      <div style={childMainDiv}>
-        {children}
-      </div>
+      <div style={childMainDiv}>{children}</div>
     </ReactModal>
   );
 };
