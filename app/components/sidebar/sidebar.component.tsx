@@ -22,12 +22,12 @@ const Sidebar: React.FC = () => {
           <Event />
         </div>
       </div>
-      <div style={{ position: 'absolute', bottom: '100px', left: '100px' }}>
-        <p>Change Language</p>
-        <button type="button" onClick={() => handleClick('en')}>
+      <div style={{ position: 'absolute', bottom: '5px', left: '100px' }}>
+        <p style={{textAlign:'center'}}>Change Language</p>
+        <button type="button" className="btn-line btn-line-square btn-line-sm btn-line-ghost-primary" onClick={() => handleClick('en')}>
           English
         </button>
-        <button type="button" onClick={() => handleClick('ar')}>
+        <button type="button" className="btn-line btn-line-square btn-line-sm btn-line-ghost-primary" onClick={() => handleClick('ar')}>
           Arabic
         </button>
       </div>

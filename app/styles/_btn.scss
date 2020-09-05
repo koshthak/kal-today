@@ -1,3 +1,5 @@
+@import './configuration';
+
 .transparent-btn {
   background: transparent;
   &,
@@ -6,4 +8,64 @@
     border: none;
     outline: none;
   }
+}
+
+$grey-color: #7f8c8d;
+$white-color: #fff;
+$border-radius: 20px;
+
+$button-padding: 15px;
+
+@mixin button-ghost($color) {
+    border: 2px solid $color;
+    
+    &:hover {
+        background-color: $color;
+    }
+    
+    &:active {
+        background-color: darken($color, 10);
+    }
+}
+
+.btn-line:not(last-child) {
+  margin-right:1em;
+}
+
+
+.btn-line {
+    color: $white-color;   
+    background-color: transparent;
+    outline:0;
+    @include transition(background-color 0.3s ease);
+    &:focus{
+      outline: none;
+    }
+}
+
+.btn-line-square {
+    border:0;
+}
+
+.btn-line-lg {
+    padding: $button-padding/1.5 $button-padding*2.5 $button-padding/1.5 $button-padding*2.5;
+    font-size: 1.2em;
+}
+
+.btn-line-md {
+    padding: $button-padding/2 $button-padding*2 $button-padding/2 $button-padding*2;
+    font-size: 1em;
+}
+
+.btn-line-sm {
+    padding: $button-padding/2.5 $button-padding*1.5 $button-padding/2.5 $button-padding*1.5;
+    font-size: 0.8em;
+}
+
+.btn-line-ghost-grey {
+  @include button-ghost($grey-color);
+}
+
+.btn-line-ghost-primary {
+  @include button-ghost($primary);
 }

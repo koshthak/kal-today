@@ -2,17 +2,51 @@
 
 .header {
   height: $header-height;
+  display: flex;
+  justify-content: flex-end;
   background-color: $header-bg-color;
 }
 
+@mixin today-btn {
+  border: 1px solid $primary;
+  background-color: $primary;
+  transition: background-color 1s, color 1s;
+  color: $view-grey-100;
+}
+
 .today {
-  float: right;
-  margin: 1rem;
+  margin: 1.5rem;
   padding: 0.5rem;
+  background-color: $view-grey-100;
+  border: none;
+  &:focus {
+    @include today-btn();
+    outline: $primary;
+  }
+  &:active {
+    @include today-btn();
+    outline: $primary;
+  }
+  &:hover {
+    @include today-btn();
+  }
 }
 
 .select {
-  float: right;
+  background-color: $header-bg-color;
   margin: 1rem;
+  width: 120px;
   padding: 0.5rem;
+  border: none;
+  &:focus {
+    border: 1px solid black;
+    outline: black;
+  }
+  &:active {
+    border: 1px solid black;
+    outline: black;
+  }
+  &:hover {
+    border: 1px solid black;
+  }
 }

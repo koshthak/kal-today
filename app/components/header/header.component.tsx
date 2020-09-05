@@ -34,14 +34,14 @@ const Header: React.FC<Props> = ({ history }: Props) => {
 
   return (
     <div className={styles.header}>
-      <button className={styles.today} type="button" onClick={setToday}>
-        Today t
-      </button>
       <select className={styles.select} onChange={changeView}>
-        <option value="monthly">Monthly m</option>
-        <option value="daily">Daily d</option>
-        <option value="weekly">Weekly w</option>
+        <option value="monthly">Monthly</option>
+        <option value="daily">Daily</option>
+        <option value="weekly">Weekly</option>
       </select>
+      <button className={styles.today} type="button" onClick={setToday}>
+        Today
+      </button>
     </div>
   );
 };
