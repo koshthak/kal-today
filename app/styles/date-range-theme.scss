@@ -1,7 +1,6 @@
 .rdrCalendarWrapper {
 	color: #000000;
 	font-size: 12px;
-	width: 100%;
 	&:not(.rdrDateRangeWrapper) {
 		.rdrDayHovered {
 			.rdrDayNumber {
@@ -467,8 +466,7 @@
 }
 .rdrDefinedRangesWrapper {
 	font-size: 12px;
-	// width: 226px;
-	width: 50%;
+	width: 226px;
 	border-right: solid 1px #eff2f7;
 	background: #fff;
 	.rdrStaticRangeSelected {

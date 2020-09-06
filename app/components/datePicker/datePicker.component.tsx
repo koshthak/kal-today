@@ -17,8 +17,6 @@ const DatePicker: React.FC = () => {
             onChange={item => {setState([item.selection]),console.log(item)}}
             showSelectionPreview={true}
             moveRangeOnFirstSelection={false}
-            color="#6f52ed"
-            rangeColors={["#6f52ed"]}
             months={1}
             ranges={state}
             direction="horizontal"
