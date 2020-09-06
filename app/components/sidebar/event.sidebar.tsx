@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import Modal from '../modal/modal.component';
+import { useTranslation } from 'react-i18next';
 import DatePicker from '../datePicker/datePicker.component';
 import addImg from '../../../internals/img/plus-white.svg';
 
@@ -10,6 +11,7 @@ const openBtn = {
 };
 
 const Event: React.FC = () => {
+  const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
 
   function openModal() {
@@ -24,7 +26,7 @@ const Event: React.FC = () => {
       <div>
         <Modal title="Add New Event" isOpen={isOpen} closeModal={closeModal}>
           <div className="row m-0">
-            <label className="p-0">Title</label>
+            <label className="p-0">{t('title')}</label>
             <div className="mainInputDiv">
               <input
                 className="effect1"
@@ -34,7 +36,7 @@ const Event: React.FC = () => {
               <span className="focusbg" />
             </div>
 
-            <label className="mt-3 p-0">Description</label>
+            <label className="mt-3 p-0">{t('description')}</label>
             <div className="mainInputDiv">
               <textarea
                 rows={5}
@@ -44,7 +46,7 @@ const Event: React.FC = () => {
               <span className="focusbg" />
             </div>
 
-            <label className="mt-3 p-0">Choose a date</label>
+            <label className="mt-3 p-0">{t('chooseDate')}</label>
             <div className="mainInputDiv">
               <DatePicker/>
               <span className="focusbg" />

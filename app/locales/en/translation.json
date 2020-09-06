@@ -2,5 +2,8 @@
   "close": "Close",
   "moment": "{{value, moment}}",
   "newEvent": "Add a new Event",
-  "changeLanguage": "Change Language"
+  "changeLanguage": "Change Language",
+  "title": "Title",
+  "description": "Description",
+  "chooseDate": "Choose a date"
 }

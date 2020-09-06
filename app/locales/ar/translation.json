@@ -2,5 +2,8 @@
   "close": "إغلاق",
   "moment": "{{value, moment}}",
   "newEvent": "أضف حدثًا جديدًا",
-  "changeLanguage": "تغيير اللغة"
+  "changeLanguage": "تغيير اللغة",
+  "title": "عنوان",
+  "description": "وصف",
+  "chooseDate": "اختر التاريخ"
 }
