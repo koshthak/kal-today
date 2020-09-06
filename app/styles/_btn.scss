@@ -28,6 +28,20 @@ $button-padding: 15px;
     }
 }
 
+@mixin button-ghost-inverse($color) {
+  border: 2px solid $color;
+    
+    &:hover {
+        color: $white-color;
+        background-color: $color;
+    }
+    
+    &:active {
+        color: $white-color;
+        background-color: darken($color, 10);
+    }
+}
+
 .btn-line:not(last-child) {
   margin-right:1em;
 }
@@ -41,6 +55,16 @@ $button-padding: 15px;
     &:focus{
       outline: none;
     }
+}
+
+.btn-line-inverse {
+  color: $primary;   
+  background-color: transparent;
+  outline:0;
+  @include transition(background-color 0.3s ease);
+  &:focus{
+    outline: none;
+  }
 }
 
 .btn-line-square {
@@ -68,4 +92,8 @@ $button-padding: 15px;
 
 .btn-line-ghost-primary {
   @include button-ghost($primary);
+}
+
+.btn-line-ghost-inverse-primary {
+  @include button-ghost-inverse($primary);
 }

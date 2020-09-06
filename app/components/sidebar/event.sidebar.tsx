@@ -51,6 +51,13 @@ const Event: React.FC = () => {
               <DatePicker/>
               <span className="focusbg" />
             </div>
+
+            <div className="pt-3">
+              <button type="button" className="btn-line-inverse btn-line-square btn-line-sm btn-line-ghost-inverse-primary">
+                {t('create')}
+              </button>
+            </div>
+
           </div>
         </Modal>
         {/*  eslint-disable-next-line jsx-a11y/no-static-element-interactions */}

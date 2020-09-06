@@ -5,10 +5,12 @@ import moment from 'moment';
 
 import sidebar, { SidebarStateType } from './sidebar.reducer';
 import status, { StatusStateType } from './status.reducer';
+import event, { EventStateType } from './event.reducer';
 
 export type RootStateType = Readonly<{
   sidebar: SidebarStateType;
   status: StatusStateType;
+  event: EventStateType;
 }>;
 
 const dateTransform = createTransform(JSON.stringify, (toRehydrate) =>
@@ -31,6 +33,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   sidebar,
   status,
+  event
 });
 
 export const persistedReducer = persistReducer(persistConfig, rootReducer);
