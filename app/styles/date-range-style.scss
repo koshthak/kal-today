@@ -80,7 +80,8 @@
 	}
 }
 .rdrMonth {
-	width: 27.667em;
+	// width: 27.667em;
+	width: 100%;
 }
 .rdrWeekDays {
 	display: -webkit-box;
@@ -164,6 +165,7 @@
 	pointer-events: none;
 }
 .rdrDateRangePickerWrapper {
+	width: 100%;
 	display: -webkit-inline-box;
 	display: inline-flex;
 	-webkit-user-select: none;
