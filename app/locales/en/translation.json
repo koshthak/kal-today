@@ -1,4 +1,6 @@
 {
   "close": "Close",
-  "moment": "{{value, moment}}"
+  "moment": "{{value, moment}}",
+  "newEvent": "Add a new Event",
+  "changeLanguage": "Change Language"
 }

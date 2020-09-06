@@ -1,4 +1,6 @@
 {
   "close": "إغلاق",
-  "moment": "{{value, moment}}"
+  "moment": "{{value, moment}}",
+  "newEvent": "أضف حدثًا جديدًا",
+  "changeLanguage": "تغيير اللغة"
 }
