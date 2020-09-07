@@ -1,6 +1,8 @@
 import React from 'react';
 
 import Modal from '../modal/modal.component';
+import { useDispatch } from 'react-redux';
+import { createNewEvent } from '../../actions/event.action';
 import { useTranslation } from 'react-i18next';
 import DatePicker from '../datePicker/datePicker.component';
 import { addDays } from 'date-fns';
@@ -15,6 +17,7 @@ interface HandleTextAreaChangeInterface {
 
 const Event = (props: { isOpen: boolean, closeModal: () => void }) => {
   const { t } = useTranslation();
+  const dispatch = useDispatch();
 
   const [title, setTitle] = React.useState('');
   const [description, setDescription] = React.useState('');
@@ -36,6 +39,15 @@ const Event = (props: { isOpen: boolean, closeModal: () => void }) => {
 
   const submitEvent = () => {
     console.log(title,description,range);
+    const event: object = {
+      title,
+      description,
+      range 
+    }
+    dispatch(createNewEvent(event));
+    setTimeout(()=>{
+      props.closeModal();
+    },2000);
   }
 
   return (
@@ -76,7 +88,8 @@ const Event = (props: { isOpen: boolean, closeModal: () => void }) => {
             <div className="pt-3">
               <button type="button" 
                 onClick={submitEvent}
-                className="btn-line-inverse btn-line-square btn-line-sm btn-line-ghost-inverse-primary">
+                disabled={title ? false : true}
+                className={title ? `btn-line-inverse btn-line-square btn-line-sm btn-line-ghost-inverse-primary` : `btn-line-inverse btn-line-square btn-line-sm btn-line-disabled`}>
                 {t('create')}
               </button>
             </div>

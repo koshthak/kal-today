@@ -97,3 +97,21 @@ $button-padding: 15px;
 .btn-line-ghost-inverse-primary {
   @include button-ghost-inverse($primary);
 }
+
+@mixin btn-line-disable {
+  background-color: $view-black-100;
+  border: 1px solid $view-black-100;
+  color: $white-color;
+}
+
+.btn-line-disabled {
+  @include btn-line-disable();
+
+  &:hover {
+    @include btn-line-disable();
+  }
+
+  &:active {
+    @include btn-line-disable();
+  }
+}
