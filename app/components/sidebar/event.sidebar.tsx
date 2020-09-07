@@ -1,30 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import Modal from '../modal/modal.component';
 import { useTranslation } from 'react-i18next';
 import DatePicker from '../datePicker/datePicker.component';
-import addImg from '../../../internals/img/plus-white.svg';
 
-const openBtn = {
-  height: 30,
-  cursor: 'pointer',
-};
-
-const Event: React.FC = () => {
+const Event = (props: { isOpen: boolean, closeModal: () => void }) => {
   const { t } = useTranslation();
-  const [isOpen, setIsOpen] = useState(false);
 
-  function openModal() {
-    setIsOpen(true);
-  }
-
-  function closeModal() {
-    setIsOpen(false);
-  }
   return (
     <>
       <div>
-        <Modal title="Add New Event" isOpen={isOpen} closeModal={closeModal}>
+        <Modal title="Add New Event" isOpen={props.isOpen} closeModal={props.closeModal}>
           <div className="row m-0">
             <label className="p-0">{t('title')}</label>
             <div className="mainInputDiv">
@@ -60,10 +46,6 @@ const Event: React.FC = () => {
 
           </div>
         </Modal>
-        {/*  eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
-        <div onClick={openModal} onKeyDown={openModal}>
-          <img src={addImg} style={openBtn} alt="open-btn" />
-        </div>
       </div>
     </>
   );
