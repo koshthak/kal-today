@@ -1,9 +1,11 @@
-# kal today
+<h1 align="center">
+  <br>
+  <a href="https://kal.today/"><img src="https://github.com/koshthak/kal-today/blob/master/kal_today_logo.png" alt="kal-today" width="200"></a>
+</h1>
 
 [![Issues][issues-shield]][issues-url]
 [![License][license-shield]][license-url]
 [![Stars][stars-shield]][stars-url]
-
 
 ## 
 
