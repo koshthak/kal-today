@@ -1,13 +1,15 @@
 <h1 align="center">
   <br>
-  <a href="https://kal.today/"><img src="https://github.com/koshthak/kal-today/blob/master/kal_today_logo.png" alt="kal-today" width="200"></a>
+  <a href="https://kal.today/"><img src="https://github.com/koshthak/kal-today/blob/master/kal_today_logo.png" alt="kal-today" width="150"></a>
+  <br>
+  Kal - Today
+  <br>
 </h1>
-<h2 align="center">Kal - Today</h2>
 
 <p align="center">
-  <a href="https://github.com/koshthak/kal-today/issues"><img src="https://img.shields.io/github/issues/koshthak/kal-today?style=for-the-badge" alt="kal-today" width="155"></a>
-  <a href="https://github.com/koshthak/kal-today/blob/master/LICENSE"><img src="https://img.shields.io/github/license/koshthak/kal-today?style=for-the-badge" alt="kal-today" width="135"></a>
-  <a href="https://github.com/koshthak/kal-today/stargazers"><img src="https://img.shields.io/github/stars/koshthak/kal-today?style=for-the-badge" alt="kal-today" width="100"></a>
+  <a href="https://github.com/koshthak/kal-today/issues"><img src="https://img.shields.io/github/issues/koshthak/kal-today?style=for-the-badge" alt="kal-today" width="125"></a>
+  <a href="https://github.com/koshthak/kal-today/blob/master/LICENSE"><img src="https://img.shields.io/github/license/koshthak/kal-today?style=for-the-badge" alt="kal-today" width="110"></a>
+  <a href="https://github.com/koshthak/kal-today/stargazers"><img src="https://img.shields.io/github/stars/koshthak/kal-today?style=for-the-badge" alt="kal-today" width="80"></a>
 </p>
 
 [comment]: <> ([![Issues][issues-shield]][issues-url])
