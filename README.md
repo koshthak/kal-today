@@ -26,6 +26,8 @@
 
 ## Contributors
 
+<a href="https://github.com/wasif-ahmed"><img src="https://github.com/koshthak/kal-today/blob/master/contributors/wasifshaikh.png" alt="wasifshaikh" width="80px"></a>
+
 [issues-shield]: https://img.shields.io/github/issues/koshthak/kal-today?style=for-the-badge
 [issues-url]: https://github.com/koshthak/kal-today/issues
 [license-shield]: https://img.shields.io/github/license/koshthak/kal-today?style=for-the-badge
