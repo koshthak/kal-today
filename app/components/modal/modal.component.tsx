@@ -27,11 +27,6 @@ const customStyles = {
   },
 };
 
-const closeBtn = {
-  float: 'right',
-  height: 20,
-};
-
 const childMainDiv = {
   marginTop: 20,
 };
@@ -45,11 +40,15 @@ const Modal: React.FC<Props> = ({ children, ...props }: Props) => {
       // eslint-disable-next-line react/jsx-props-no-spreading
       {...props}
     >
-      <div>
+      <div
+        onClick={closeModal}
+        onKeyPress={closeModal}
+        role="button"
+        tabIndex={0}
+      >
         <img
           src={closeImg}
-          style={closeBtn}
-          onClick={closeModal}
+          style={{ float: 'right', height: 20 }}
           alt="close-btn"
         />
       </div>

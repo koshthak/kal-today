@@ -1,11 +1,12 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
+import { addDays } from 'date-fns';
+
+import { createNewEvent } from '../../actions/event.action';
+import DatePicker from '../datePicker/datePicker.component';
 
 import Modal from '../modal/modal.component';
-import { useDispatch } from 'react-redux';
-import { createNewEvent } from '../../actions/event.action';
-import { useTranslation } from 'react-i18next';
-import DatePicker from '../datePicker/datePicker.component';
-import { addDays } from 'date-fns';
 
 interface HandleInputChangeInterface {
   target: HTMLInputElement;
@@ -15,7 +16,12 @@ interface HandleTextAreaChangeInterface {
   target: HTMLTextAreaElement;
 }
 
-const Event = (props: { isOpen: boolean, closeModal: () => void }) => {
+type Props = {
+  closeModal: () => void;
+  isOpen: boolean;
+};
+
+const Event = ({ isOpen, closeModal }: Props) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
 
@@ -24,36 +30,35 @@ const Event = (props: { isOpen: boolean, closeModal: () => void }) => {
   const [range, setRange] = React.useState({
     startDate: new Date(),
     endDate: addDays(new Date(), 7),
-    key: 'selection'
+    key: 'selection',
   });
 
   const onSetTitle = (e: HandleInputChangeInterface) => {
-    setTitle(e.target.value.trim())
+    setTitle(e.target.value.trim());
     // console.log(e.target.value)
-  }
+  };
 
-  const onSetDescription = (e: HandleTextAreaChangeInterface) =>{
-    setDescription(e.target.value.trim())
+  const onSetDescription = (e: HandleTextAreaChangeInterface) => {
+    setDescription(e.target.value.trim());
     // console.log(e.target.value)
-  }
+  };
 
   const submitEvent = () => {
-    console.log(title,description,range);
-    const event: object = {
+    const event: Record<string, unknown> = {
       title,
       description,
-      range 
-    }
+      range,
+    };
     dispatch(createNewEvent(event));
-    setTimeout(()=>{
-      props.closeModal();
-    },2000);
-  }
+    setTimeout(() => {
+      closeModal();
+    }, 2000);
+  };
 
   return (
     <>
       <div>
-        <Modal title="Add New Event" isOpen={props.isOpen} closeModal={props.closeModal}>
+        <Modal title="Add New Event" isOpen={isOpen} closeModal={closeModal}>
           <div className="row m-0">
             <label className="p-0">{t('title')}</label>
             <div className="mainInputDiv">
@@ -86,14 +91,19 @@ const Event = (props: { isOpen: boolean, closeModal: () => void }) => {
             </div>
 
             <div className="pt-3">
-              <button type="button" 
-                onClick={submitEvent}
-                disabled={title ? false : true}
-                className={title ? `btn-line-inverse btn-line-square btn-line-sm btn-line-ghost-inverse-primary` : `btn-line-inverse btn-line-square btn-line-sm btn-line-disabled`}>
+              <button
+                type="button"
+                onClick={() => submitEvent}
+                disabled={!title}
+                className={
+                  title
+                    ? `btn-line-inverse btn-line-square btn-line-sm btn-line-ghost-inverse-primary`
+                    : `btn-line-inverse btn-line-square btn-line-sm btn-line-disabled`
+                }
+              >
                 {t('create')}
               </button>
             </div>
-
           </div>
         </Modal>
       </div>

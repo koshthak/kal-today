@@ -25,7 +25,7 @@ const dateTransform = createTransform(JSON.stringify, (toRehydrate) =>
 const persistConfig = {
   key: 'root',
   storage,
-  blacklist: ['nav', 'status'],
+  blacklist: ['sidebar', 'status'],
   debug: true, // to get useful logging
   transforms: [dateTransform],
 };
@@ -33,7 +33,11 @@ const persistConfig = {
 const rootReducer = combineReducers({
   sidebar,
   status,
-  event
+  event,
 });
 
-export const persistedReducer = persistReducer(persistConfig, rootReducer);
+// TODO: update redux-persist to remove explicit any type
+export const persistedReducer = persistReducer(
+  persistConfig,
+  rootReducer as any
+);

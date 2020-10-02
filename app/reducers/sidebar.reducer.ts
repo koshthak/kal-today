@@ -25,7 +25,7 @@ const initialState: SidebarStateType = {
 const sidebar = (state = initialState, action: SidebarActionType) => {
   switch (action.type) {
     case SET_SIDEBAR_SELECTED_DATE:
-      return { ...state, selectedDate: action };
+      return { ...state, selectedDate: action.payload };
     case SET_SIDEBAR_ACTIVE_DATE:
       return { ...state, activeDate: action.payload };
     default:

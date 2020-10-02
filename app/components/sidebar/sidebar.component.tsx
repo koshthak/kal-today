@@ -41,17 +41,23 @@ const Sidebar: React.FC = () => {
           <div onClick={openModal} onKeyDown={openModal}>
             <img src={addImg} style={openBtn} alt="open-btn" />
           </div>
-          {
-            isOpen && <Event isOpen={isOpen} closeModal={closeModal} />
-          }
+          {isOpen && <Event isOpen={isOpen} closeModal={closeModal} />}
         </div>
       </div>
       <div style={{ position: 'absolute', bottom: '5px', left: '100px' }}>
-        <p style={{textAlign:'center'}}>{t('changeLanguage')}</p>
-        <button type="button" className="btn-line btn-line-square btn-line-sm btn-line-ghost-primary" onClick={() => handleClick('en')}>
+        <p style={{ textAlign: 'center' }}>{t('changeLanguage')}</p>
+        <button
+          type="button"
+          className="btn-line btn-line-square btn-line-sm btn-line-ghost-primary"
+          onClick={() => handleClick('en')}
+        >
           English
         </button>
-        <button type="button" className="btn-line btn-line-square btn-line-sm btn-line-ghost-primary" onClick={() => handleClick('ar')}>
+        <button
+          type="button"
+          className="btn-line btn-line-square btn-line-sm btn-line-ghost-primary"
+          onClick={() => handleClick('ar')}
+        >
           Arabic
         </button>
       </div>
