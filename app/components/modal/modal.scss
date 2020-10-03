@@ -1,0 +1,33 @@
+@import './../../styles/configuration';
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 70%;
+  width: 70%;
+  overflow-y: scroll;
+  padding: 1rem;
+  background-color: $white;
+  border-radius: 2px;
+
+  &:focus {
+    outline: $black;
+  }
+}
+
+.close-btn {
+  background-color: transparent;
+  border: 0;
+  position: absolute;
+  right: 5px;
+  top: 0;
+  height: 2rem;
+  width: 2rem;
+  padding: 0.5rem;
+  outline: none;
+  &:focus {
+    outline: none;
+  }
+}

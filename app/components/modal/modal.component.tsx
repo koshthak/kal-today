@@ -2,57 +2,34 @@ import React from 'react';
 import ReactModal from 'react-modal';
 
 import closeImg from '../../../internals/img/close.svg';
-
-// ReactModal.setAppElement('#modal');
+import styles from './modal.scss';
 
 type Props = {
-  title: string;
-  children?: React.ReactNode;
-  onRequestClose?: () => void;
+  children: React.ReactNode;
   closeModal: () => void;
-  isOpen: boolean;
 };
 
-const customStyles = {
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    height: '70%',
-    width: '70%',
-    transform: 'translate(-50%, -50%)',
-    // border: '2px solid black',
-  },
-};
-
-const childMainDiv = {
-  marginTop: 20,
-};
-
-const Modal: React.FC<Props> = ({ children, ...props }: Props) => {
-  const { closeModal } = props;
+const Modal: React.FC<Props & ReactModal.Props> = ({
+  children,
+  closeModal,
+  className,
+  ...props
+}: Props & ReactModal.Props) => {
   return (
     <ReactModal
       ariaHideApp={false}
-      style={customStyles}
+      className={className || styles.modal}
       // eslint-disable-next-line react/jsx-props-no-spreading
       {...props}
     >
-      <div
+      <button
+        type="button"
         onClick={closeModal}
-        onKeyPress={closeModal}
-        role="button"
-        tabIndex={0}
+        className={styles['close-btn']}
       >
-        <img
-          src={closeImg}
-          style={{ float: 'right', height: 20 }}
-          alt="close-btn"
-        />
-      </div>
-      <div style={childMainDiv}>{children}</div>
+        <img src={closeImg} alt="close-btn" />
+      </button>
+      {children}
     </ReactModal>
   );
 };

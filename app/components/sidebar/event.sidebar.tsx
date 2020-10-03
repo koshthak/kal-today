@@ -57,7 +57,7 @@ const Event = ({ isOpen, closeModal }: Props) => {
   };
 
   return (
-    <Modal title="Add New Event" isOpen={isOpen} closeModal={closeModal}>
+    <Modal isOpen={isOpen} closeModal={closeModal}>
       <div className="row m-0">
         <label className="p-0">{t('title')}</label>
         <div className="mainInputDiv">
