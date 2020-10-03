@@ -9,6 +9,7 @@ import {
 } from '../../utils/calendar.utils';
 import { RootStateType } from '../../reducers';
 import { StatusStateType } from '../../reducers/status.reducer';
+import { EventStateType } from '../../reducers/event.reducer';
 import CAL_CONST from '../../constants/calendar';
 
 import styles from './monthly.scss';
@@ -18,6 +19,9 @@ const MonthlyDates: React.FC = () => {
 
   const { today, activeDate }: StatusStateType = useSelector(
     (state: RootStateType) => state.status
+  );
+  const { eventList }: EventStateType = useSelector(
+    (state: RootStateType) => state.event
   );
 
   useEffect(() => {}, [t]);
@@ -37,8 +41,8 @@ const MonthlyDates: React.FC = () => {
           {d}
         </div>
       ))}
-      {days.map((e, i) => (
-        <Fragment key={e.key}>
+      {days.map((d, i) => (
+        <Fragment key={d.key}>
           {i % CAL_CONST.DAYS_IN_WEEK === 0 && (
             <div style={{ height: 0 }} className="w-100" />
           )}
@@ -46,12 +50,19 @@ const MonthlyDates: React.FC = () => {
             className={[
               'col',
               isMaxRowsView ? styles['max-rows-view'] : '',
-              e.dateObj.isSame(today, 'day') ? styles.today : '',
-              e.dateObj.isBefore(today, 'day') ? styles.prevdays : '',
-              styles[e.class],
+              d.dateObj.isSame(today, 'day') ? styles.today : '',
+              d.dateObj.isBefore(today, 'day') ? styles.prevdays : '',
+              styles[d.class],
             ].join(' ')}
           >
-            {e.dateObj.format('D')}
+            {d.dateObj.format('D')}
+            {eventList
+              .filter((e) =>
+                d.dateObj.isBetween(e.range.startDate, e.range.endDate)
+              )
+              .map((e) => (
+                <div key={e.title}>{e.title}</div>
+              ))}
           </div>
         </Fragment>
       ))}

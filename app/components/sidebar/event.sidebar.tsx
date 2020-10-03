@@ -49,6 +49,7 @@ const Event = ({ isOpen, closeModal }: Props) => {
       description,
       range,
     };
+
     dispatch(createNewEvent(event));
     setTimeout(() => {
       closeModal();
@@ -56,58 +57,54 @@ const Event = ({ isOpen, closeModal }: Props) => {
   };
 
   return (
-    <>
-      <div>
-        <Modal title="Add New Event" isOpen={isOpen} closeModal={closeModal}>
-          <div className="row m-0">
-            <label className="p-0">{t('title')}</label>
-            <div className="mainInputDiv">
-              <input
-                className="effect1"
-                type="text"
-                value={title}
-                onChange={onSetTitle}
-                placeholder="Enter title"
-              />
-              <span className="focusbg" />
-            </div>
+    <Modal title="Add New Event" isOpen={isOpen} closeModal={closeModal}>
+      <div className="row m-0">
+        <label className="p-0">{t('title')}</label>
+        <div className="mainInputDiv">
+          <input
+            className="effect1"
+            type="text"
+            value={title}
+            onChange={onSetTitle}
+            placeholder="Enter title"
+          />
+          <span className="focusbg" />
+        </div>
 
-            <label className="mt-3 p-0">{t('description')}</label>
-            <div className="mainInputDiv">
-              <textarea
-                rows={5}
-                className="effect1"
-                value={description}
-                onChange={onSetDescription}
-                placeholder="Enter description"
-              />
-              <span className="focusbg" />
-            </div>
+        <label className="mt-3 p-0">{t('description')}</label>
+        <div className="mainInputDiv">
+          <textarea
+            rows={5}
+            className="effect1"
+            value={description}
+            onChange={onSetDescription}
+            placeholder="Enter description"
+          />
+          <span className="focusbg" />
+        </div>
 
-            <label className="mt-3 p-0">{t('chooseDate')}</label>
-            <div className="mainInputDiv">
-              <DatePicker setRange={setRange} />
-              <span className="focusbg" />
-            </div>
+        <label className="mt-3 p-0">{t('chooseDate')}</label>
+        <div className="mainInputDiv">
+          <DatePicker setRange={setRange} />
+          <span className="focusbg" />
+        </div>
 
-            <div className="pt-3">
-              <button
-                type="button"
-                onClick={() => submitEvent}
-                disabled={!title}
-                className={
-                  title
-                    ? `btn-line-inverse btn-line-square btn-line-sm btn-line-ghost-inverse-primary`
-                    : `btn-line-inverse btn-line-square btn-line-sm btn-line-disabled`
-                }
-              >
-                {t('create')}
-              </button>
-            </div>
-          </div>
-        </Modal>
+        <div className="pt-3">
+          <button
+            type="button"
+            onClick={submitEvent}
+            disabled={!title}
+            className={
+              title
+                ? `btn-line-inverse btn-line-square btn-line-sm btn-line-ghost-inverse-primary`
+                : `btn-line-inverse btn-line-square btn-line-sm btn-line-disabled`
+            }
+          >
+            {t('create')}
+          </button>
+        </div>
       </div>
-    </>
+    </Modal>
   );
 };
 
