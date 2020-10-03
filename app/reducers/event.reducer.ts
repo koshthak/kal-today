@@ -1,14 +1,25 @@
+import { Moment } from 'moment';
 import { Dispatch as ReduxDispatch } from 'redux';
 
 import { CREATE_NEW_EVENT } from '../constants/actionType';
 
+export type EventType = {
+  title: string;
+  description: string;
+  range: {
+    startDate: Moment | Date;
+    endDate: Moment | Date;
+    key: string;
+  };
+};
+
 export type EventStateType = Readonly<{
-  eventList: Array<Record<string, unknown>>;
+  eventList: Array<EventType>;
 }>;
 
 export type EventActionType = {
   type: typeof CREATE_NEW_EVENT;
-  payload: Record<string, unknown>;
+  payload: EventType;
 };
 
 export type EventDispatchType = ReduxDispatch<EventActionType>;

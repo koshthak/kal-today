@@ -44,7 +44,7 @@ const Event = ({ isOpen, closeModal }: Props) => {
   };
 
   const submitEvent = () => {
-    const event: Record<string, unknown> = {
+    const event = {
       title,
       description,
       range,
