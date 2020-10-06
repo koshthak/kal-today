@@ -1496,15 +1496,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-14.0.12.tgz#9c1d8ffb8084e8936603a6122a7649e40e68e04b"
   integrity sha512-/sjzehvjkkpvLpYtN6/2dv5kg41otMGuHQUt9T2aiAuIfleCQRQHXXzF1eAw/qkZTj5Kcf4JSTf7EIizHocy6Q==
 
-"@types/node@12":
+"@types/node@12", "@types/node@^12.0.12":
   version "12.12.53"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-12.12.53.tgz#be0d375933c3d15ef2380dafb3b0350ea7021129"
   integrity sha512-51MYTDTyCziHb70wtGNFRwB4l+5JNvdqzFSkbDvpbftEgVUBEE+T5f7pROhWMp/fxp07oNIEQZd5bbfAH22ohQ==
-
-"@types/node@^12.0.12":
-  version "12.12.45"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.12.45.tgz#33d550d6da243652004b00cbf4f15997456a38e3"
-  integrity sha512-9w50wqeS0qQH9bo1iIRcQhDXRxoDzyAqCL5oJG+Nuu7cAoe6omGo+YDE0spAGK5sPrdLDhQLbQxq0DnxyndPKA==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.0"
@@ -4161,9 +4156,9 @@ electron@*:
     extract-zip "^1.0.3"
 
 electron@^8:
-  version "8.4.1"
-  resolved "https://registry.yarnpkg.com/electron/-/electron-8.4.1.tgz#124d6c65d02a644b389f498d549f2411a0a94c27"
-  integrity sha512-2UK0dUlkwoUAxRDS9VHm3M/zKW+Vm71b1mqSfHx+L7VEfTjiO1Vt2l+kGFg0sUpa/CVMtSCqaeZucrNN6VQwwA==
+  version "8.5.1"
+  resolved "https://registry.yarnpkg.com/electron/-/electron-8.5.1.tgz#db1c0c1dab16bfa3ac87bfc4c0ad86d43c3cfff4"
+  integrity sha512-bsjMmjERUKFFh9JRX77rB/m3PizgxJvtAYnUkLFOj4nYofpRhaABkOSCzH/e/tPwHyu/PYh0oDfSXW6IEwG4gQ==
   dependencies:
     "@electron/get" "^1.0.1"
     "@types/node" "^12.0.12"
