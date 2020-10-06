@@ -1,0 +1,70 @@
+@import './../../styles/configuration';
+
+.conatiner {
+  height: 100%;
+  width: 100%;
+  display: flex;
+}
+
+.non-selectable {
+  color: $gray-600;
+  background-color: $gray-100;
+  cursor: not-allowed !important;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+
+  .month {
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+  }
+
+  .year {
+    font-size: 1rem;
+    line-height: 1rem;
+  }
+
+  .month,
+  .year {
+    margin: 0;
+  }
+}
+
+.slection-preview {
+  flex: 1;
+}
+
+.dates-container {
+  flex: 2;
+
+  .weekday {
+    font-weight: 600;
+  }
+
+  .curr-month {
+    color: $black;
+    cursor: pointer;
+  }
+
+  .curr-month,
+  .today {
+    cursor: pointer;
+    &:hover {
+      color: $white;
+      background-color: $primary;
+    }
+  }
+
+  .today {
+    background-color: lighten($primary, 25);
+  }
+
+  .prev-month,
+  .next-month {
+    @extend .non-selectable;
+  }
+}

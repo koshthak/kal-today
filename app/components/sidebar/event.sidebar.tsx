@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { addDays } from 'date-fns';
+import moment from 'moment';
 
 import { createNewEvent } from '../../actions/event.action';
 import DatePicker from '../datePicker/datePicker.component';
@@ -29,7 +29,7 @@ const Event = ({ isOpen, closeModal }: Props) => {
   const [description, setDescription] = React.useState('');
   const [range, setRange] = React.useState({
     startDate: new Date(),
-    endDate: addDays(new Date(), 7),
+    endDate: moment(new Date()).add(7, 'd'),
     key: 'selection',
   });
 
@@ -85,7 +85,7 @@ const Event = ({ isOpen, closeModal }: Props) => {
 
         <label className="mt-3 p-0">{t('chooseDate')}</label>
         <div className="mainInputDiv">
-          <DatePicker setRange={setRange} />
+          <DatePicker setRange={setRange} showSelectionPreview />
           <span className="focusbg" />
         </div>
 

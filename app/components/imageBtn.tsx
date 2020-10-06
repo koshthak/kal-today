@@ -3,7 +3,7 @@ import React from 'react';
 type Props = {
   imgSrc: string;
   onClick: () => void;
-  className: string;
+  className?: string;
   imgClassName?: string;
 };
 
@@ -22,6 +22,11 @@ const ImageBtn: React.FC<Props> = ({
       <img src={imgSrc} className={imgClassName} alt="prev-btn" />
     </button>
   );
+};
+
+ImageBtn.defaultProps = {
+  imgClassName: '',
+  className: '',
 };
 
 export default ImageBtn;

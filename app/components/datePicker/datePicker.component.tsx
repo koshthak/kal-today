@@ -1,39 +1,45 @@
-import React, { useState } from 'react';
-import { DateRangePicker } from 'react-date-range';
-import { addDays } from 'date-fns';
+import React from 'react';
+// import { DateRangePicker } from 'react-date-range';
+// import { addDays } from 'date-fns';
+// import moment from 'moment';
+
+import DatePickerSelectionPreview from './selectionPreview.datepicker';
+import styles from './datepicker.scss';
+import DatePickerDates from './dates.datePicker';
 
 type Props = {
-  setRange: React.SetStateAction<any>;
+  setRange: React.SetStateAction<unknown>;
+  conatinerClassName?: string;
+  showSelectionPreview?: boolean;
 };
 
-const DatePicker = ({ setRange }: Props) => {
-  const [state, setState] = useState([
-    {
-      startDate: new Date(),
-      endDate: addDays(new Date(), 7),
-      key: 'selection',
-    },
-  ]);
+const DatePicker = (props: Props) => {
+  const { setRange, showSelectionPreview, conatinerClassName } = props;
+  // const [state, setState] = useState([
+  //   {
+  //     startDate: moment(),
+  //     endDate: moment().add(7, 'd'),
+  //     key: 'selection',
+  //   },
+  // ]);
 
   const onDateChange = (item: any) => {
-    setState([item.selection]);
-    setRange(item.selection);
-    console.log(item);
+    // setState([item.selection]);
+    // setRange(item.selection);
+    // console.log(item);
   };
 
   return (
-    <DateRangePicker
-      // onChange={item => {setState([item.selection]),console.log(item)}}
-      onChange={onDateChange}
-      showSelectionPreview
-      moveRangeOnFirstSelection={false}
-      // color="#6f52ed"
-      rangeColors={['#6f52ed']}
-      months={1}
-      ranges={state}
-      direction="horizontal"
-    />
+    <div className={`${styles.conatiner} ${conatinerClassName}`}>
+      {showSelectionPreview && <DatePickerSelectionPreview />}
+      <DatePickerDates />
+    </div>
   );
+};
+
+DatePicker.defaultProps = {
+  conatinerClassName: '',
+  showSelectionPreview: false,
 };
 
 export default DatePicker;
