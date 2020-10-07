@@ -6,17 +6,15 @@
   display: flex;
 }
 
-.non-selectable {
-  color: $gray-600;
-  background-color: $gray-100;
-  cursor: not-allowed !important;
-}
-
 .header {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 1rem;
+
+  .month-wrapper {
+    min-width: 8rem;
+  }
 
   .month {
     font-size: 1.5rem;
@@ -45,26 +43,69 @@
     font-weight: 600;
   }
 
+  .prev-month,
+  .next-month {
+    .date-btn-txt {
+      color: $gray-500;
+    }
+  }
+
+  .prev-month,
+  .next-month,
+  .curr-month,
+  .non-selectable {
+    padding: 0.2rem;
+    border: 2px solid transparent;
+  }
+
+  .curr-month,
+  .next-month,
+  .prev-month,
+  .today {
+    cursor: pointer;
+    &:hover {
+      border: 2px solid lighten($primary, 10);
+    }
+  }
+
   .curr-month {
     color: $black;
     cursor: pointer;
   }
 
-  .curr-month,
   .today {
-    cursor: pointer;
-    &:hover {
-      color: $white;
-      background-color: $primary;
+    color: lighten($primary, 10);
+    font-weight: 600;
+
+    .date-btn-txt {
+      display: inline-block;
+      width: 100%;
+      border-bottom: 2px solid lighten($primary, 10);
     }
   }
+}
 
-  .today {
-    background-color: lighten($primary, 25);
+.preview-date {
+  color: $white !important;
+  background-color: lighten($primary, 30);
+}
+
+.start-date,
+.end-date,
+.selected-date {
+  color: $white !important;
+  background-color: $primary;
+
+  &.today > .date-btn-txt {
+    border-bottom: 2px solid $white;
   }
+}
 
-  .prev-month,
-  .next-month {
-    @extend .non-selectable;
+.non-selectable {
+  &,
+  & > * {
+    color: $gray-600;
+    background-color: $gray-100;
+    cursor: not-allowed !important;
   }
 }

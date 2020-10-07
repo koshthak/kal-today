@@ -1,12 +1,13 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import moment from 'moment';
+import moment, { Moment } from 'moment';
 
 import { createNewEvent } from '../../actions/event.action';
 import DatePicker from '../datePicker/datePicker.component';
 
 import Modal from '../modal/modal.component';
+import { SeclectionRange } from '../datePicker/dates.datePicker';
 
 interface HandleInputChangeInterface {
   target: HTMLInputElement;
@@ -56,6 +57,10 @@ const Event = ({ isOpen, closeModal }: Props) => {
     }, 2000);
   };
 
+  const onDateChange = (value: SeclectionRange | Moment | null) => {
+    console.log(value);
+  };
+
   return (
     <Modal isOpen={isOpen} closeModal={closeModal}>
       <div className="row m-0">
@@ -85,7 +90,7 @@ const Event = ({ isOpen, closeModal }: Props) => {
 
         <label className="mt-3 p-0">{t('chooseDate')}</label>
         <div className="mainInputDiv">
-          <DatePicker setRange={setRange} showSelectionPreview />
+          <DatePicker onChange={onDateChange} rangeSelection />
           <span className="focusbg" />
         </div>
 

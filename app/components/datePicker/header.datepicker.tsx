@@ -39,7 +39,7 @@ const DatePickerHeader = ({ date, setDate }: Props) => {
         }`}
         imgClassName="prev-img"
       />
-      <div>
+      <div className={styles['month-wrapper']}>
         <p className={`text-center ${styles.month}`}>{monthName}</p>
         <p className={`text-center ${styles.year}`}>{year}</p>
       </div>
@@ -51,10 +51,5 @@ const DatePickerHeader = ({ date, setDate }: Props) => {
     </div>
   );
 };
-
-// DatePickerHeader.defaultProps = {
-//   conatinerClassName: '',
-//   showSelectionPreview: false,
-// };
 
 export default DatePickerHeader;
